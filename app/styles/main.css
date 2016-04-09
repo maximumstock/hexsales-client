@@ -1,0 +1,44 @@
+body {
+  border: 2px solid red;
+}
+
+/* X% margin left and right for the content of the header */
+nav.navbar > .container-fluid {
+  margin: 0 4% 0 4%;
+}
+
+/* X% margin left and right for #content */
+div#content {
+  margin: 0 4% 40px 4%;
+}
+
+/* centers the icon in the header and makes it look not shit */
+div.navbar-header > a.navbar-brand {
+  padding: 0px;
+  margin-right: 15px;
+}
+
+#footer {
+  background-color: #f8f8f8;
+  border: 1px solid #e7e7e7;
+  color: #888888;
+  font-size: 12px;
+  vertical-align: middle;
+  padding: 15px 0 15px 0;
+}
+
+/* faq on /about */
+.faq-group {
+  margin-top: 20px;
+}
+
+.faq-group p {
+  margin: 0;
+}
+
+.faq-question {
+  font-weight: bold;
+}
+
+.faq-answer {
+}

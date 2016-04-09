@@ -1,0 +1,83 @@
+<!-- img if possibru -->
+<!-- <div id="article-image-container" class="col-xs-2">
+  <div card-img size="big" name="{{articleNameSanitized}}"></div>
+</div> -->
+
+
+<!-- basic details -->
+<div class="col-md-6">
+  <dl class="dl-horizontal">
+    <dt>Name:</dt>
+    <dd>{{articleName || articleBasics.internal}}</dd>
+    <dt>Rarity:</dt>
+    <dd>{{articleBasics.rarity || '-'}}</dd>
+    <dt>Set ID:</dt>
+    <dd>{{articleBasics.setid || '-'}}</dd>
+    <dt>Type:</dt>
+    <dd>{{articleBasics.type || '-'}}</dd>
+  </dl>
+</div>
+
+<!-- <div class="col-md-3">
+  <table class="table table-bordered">
+    <tr>
+      <td><b>Name:</b></td>
+      <td>{{articleBasics.name || articleBasics.internal}}</td>
+    </tr>
+    <tr>
+      <td>Rarity:</td>
+      <td>{{articleBasics.rarity || '-'}}</td>
+    </tr>
+    <tr>
+      <td>Set ID:</td>
+      <td>{{articleBasics.setid || '-'}}</td>
+    </tr>
+    <tr>
+      <td>Type:</td>
+      <td>{{articleBasics.type || '-'}}</td>
+    </tr>
+  </table>
+</div> -->
+
+<div class="col-xs-12">
+  <hr/>
+</div>
+
+<!-- summary data -->
+<div class="col-xs-12">
+  <p>Here is a short summary of basic metrics of sales for <b>{{articleName}}</b>.</p>
+  <table class="table table-striped table-condensed table-bordered">
+
+    <thead>
+      <th>Timespan</th>
+      <th>Average</th>
+      <th>Median</th>
+      <th>Minimum</th>
+      <th>Maximum</th>
+      <th>Total</th>
+      <th>Quantity</th>
+    </thead>
+
+    <tbody>
+      <tr ng-repeat="(timeframe, data) in summaryData">
+        <td ng-show="isNumber({{timeframe}})">Last {{timeframe}} days</td>
+        <td ng-hide="isNumber({{timeframe}})">{{timeframe}}</td>
+        <td>{{data.platinum.avg || 0}} P / {{data.gold.avg || 0}} G</td>
+        <td>{{data.platinum.median || 0}} P / {{data.gold.median || 0}} G</td>
+        <td>{{data.platinum.min || 0}} P / {{data.gold.min || 0}} G</td>
+        <td>{{data.platinum.max || 0}} P / {{data.gold.max || 0}} G</td>
+        <td>{{data.platinum.total || 0}} P / {{data.gold.total || 0}} G</td>
+        <td>{{data.platinum.quantity || 0}} / {{data.gold.quantity || 0}}</td>
+      </tr>
+    </tbody>
+
+  </table>
+</div>
+
+<div class="col-xs-12">
+  <hr/>
+</div>
+
+<!-- history data -->
+<highchart id="article-platinum" config="chartConfigs.platinum" class="col-xs-12"></highchart>
+<highchart id="article-gold" config="chartConfigs.gold" class="col-xs-12"></highchart>

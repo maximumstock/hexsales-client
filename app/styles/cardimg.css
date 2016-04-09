@@ -1,0 +1,29 @@
+.portrait-container {
+  background: none repeat scroll 0 0 #1E2531;
+  border: 1px solid #8E846B;
+	box-shadow: 0 0 6px #8E846B;
+  border-radius: 8px;
+  z-index: 9999;
+	line-height: 0;
+  width: 337px;
+  vertical-align: middle;
+}
+
+.card-portrait {
+	width: 320px;
+	height: 440px;
+	margin: 8px;
+	background: url("http://hex.tcgbrowser.com/images/cards/cardback-big.jpg") no-repeat;
+	background-size: 320px 440px;
+	border-radius: 12px;
+	overflow: hidden;
+}
+
+.card-portrait img {
+	width: 320px;
+	height: 440px;
+}
+
+p.subtitle {
+  font-size: 10px;
+}
