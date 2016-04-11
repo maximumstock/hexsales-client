@@ -10,18 +10,18 @@
 }
 
 .card-portrait {
-	width: 320px;
-	height: 440px;
+	width: 215px;
+	height: 300px;
 	margin: 8px;
 	background: url("http://hex.tcgbrowser.com/images/cards/cardback-big.jpg") no-repeat;
-	background-size: 320px 440px;
+	background-size: 215px 300px;
 	border-radius: 12px;
 	overflow: hidden;
 }
 
 .card-portrait img {
-	width: 320px;
-	height: 440px;
+	width: 215px;
+	height: 300px;
 }
 
 p.subtitle {

@@ -5,11 +5,8 @@ angular.module('hexsales-client')
 
     var apiUrl = 'http://localhost:3000/v1';
 
-    this.findArticle = function(articleName) {
-      return $http.get(apiUrl + '/articles/' + articleName)
-    };
-
     this.searchArticles = function(params) {
+      params.contains = true;
       return $http.post(apiUrl + '/articles/search', params);
     };
 
@@ -30,6 +27,17 @@ angular.module('hexsales-client')
 
     this.getArticleHistory = function(params) {
       var url = apiUrl + '/articles/' + params.name + '/histories?q=1';
+      if(params.start) {
+        url = url + '&start=' +  params.start;
+      }
+      if(params.end) {
+        url = url + '&end=' + params.end;
+      }
+      return $http.get(url);
+    }
+
+    this.getEconomyHistory = function(params) {
+      var url = apiUrl + '/economy/histories?q=1';
       if(params.start) {
         url = url + '&start=' +  params.start;
       }

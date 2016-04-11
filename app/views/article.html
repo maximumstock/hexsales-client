@@ -1,23 +1,22 @@
-<!-- img if possibru -->
-<!-- <div id="article-image-container" class="col-xs-2">
-  <div card-img size="big" name="{{articleNameSanitized}}"></div>
-</div> -->
-
-
-<!-- basic details -->
-<div class="col-md-6">
-  <dl class="dl-horizontal">
-    <dt>Name:</dt>
-    <dd>{{articleName || articleBasics.internal}}</dd>
-    <dt>Rarity:</dt>
-    <dd>{{articleBasics.rarity || '-'}}</dd>
-    <dt>Set ID:</dt>
-    <dd>{{articleBasics.setid || '-'}}</dd>
-    <dt>Type:</dt>
-    <dd>{{articleBasics.type || '-'}}</dd>
-  </dl>
+<!-- breadcrumb nav -->
+<div class="col-xs-12">
+  <ol class="breadcrumb">
+    <li><a href="#/articles">All Articles</a></li>
+    <li class="active">{{articleName}}</li>
+  </ol>
+  <hr/>
 </div>
 
+<!-- basic details -->
+<div class="col-xs-12">
+  <div ng-if="articleBasics.type === 'Card'" card-img size="big" name="{{articleNameSanitized}}"></div>
+  <div ng-if="articleBasics.type !== 'Card'">
+    <p><strong>Name:</strong> {{articleName || articleBasics.internal}}</p>
+    <p><strong>Rarity:</strong> {{articleBasics.rarity || '-'}}</p>
+    <p><strong>Set:</strong> {{articleBasics.setid || '-'}}</p>
+    <p><strong>Type:</strong> {{articleBasics.type || '-'}}</p>
+  </div>
+</div>
 <!-- <div class="col-md-3">
   <table class="table table-bordered">
     <tr>
@@ -45,17 +44,17 @@
 
 <!-- summary data -->
 <div class="col-xs-12">
-  <p>Here is a short summary of basic metrics of sales for <b>{{articleName}}</b>.</p>
+  <p>Here is a short summary of basic metrics of sales for <b>{{articleName}}</b> per currency.</p>
   <table class="table table-striped table-condensed table-bordered">
 
     <thead>
       <th>Timespan</th>
-      <th>Average</th>
-      <th>Median</th>
-      <th>Minimum</th>
-      <th>Maximum</th>
-      <th>Total</th>
-      <th>Quantity</th>
+      <th>Average Price</th>
+      <th>Median Price</th>
+      <th>Minimum Price</th>
+      <th>Maximum Price</th>
+      <th>Total Spent</th>
+      <th>Quantity Sold</th>
     </thead>
 
     <tbody>

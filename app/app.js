@@ -5,16 +5,16 @@ var app = angular.module('hexsales-client', ['ngRoute', 'highcharts-ng']);
 app.config(['$routeProvider', function($routeProvider) {
   $routeProvider
     .when('/', {
-      controller: 'OverviewCtrl',
-      templateUrl: 'app/views/overview.html'
+      controller: 'EconomyCtrl',
+      templateUrl: 'app/views/economy.html'
+    })
+    .when('/articles', {
+      controller: 'ArticleCtrl',
+      templateUrl: 'app/views/articles.html'
     })
     .when('/articles/:name', {
-      controller: 'ArticleCtrl',
+      controller: 'SingleArticleCtrl',
       templateUrl: 'app/views/article.html'
-    })
-    .when('/sets/:name', {
-      controller: '',
-      templateUrl: 'app/views/set.html'
     })
     .when('/search/:term', {
       controller: 'SearchResultCtrl',
