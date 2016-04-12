@@ -1,4 +1,4 @@
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default" ng-controller="HeaderCtrl">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -14,32 +14,32 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li class="active"><a href="#/overview">Overview</a></li>
-        <li><a href="#/">Economy</a></li>
-        <li><a href="#/articles">All Articles</a></li>
+        <!-- <li class="active"><a href="#/overview">Overview</a></li> -->
+        <li ng-class="{ active: isActive('/')}"><a href="#/">Economy</a></li>
+        <li ng-class="{ active: isActive('/articles')}"><a href="#/articles">All Articles</a></li>
         <li class="dropdown">
           <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Packs <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#/articles/Set 001 Booster Pack">Set 001 Booster Pack</a></li>
-            <li><a href="#/articles/Set 001 Primal Pack">Set 001 Primal Pack</a></li>
+            <li ng-class="{ active: isActive('/articles/Set 001 Booster Pack')}"><a href="#/articles/Set 001 Booster Pack">Set 001 Booster Pack</a></li>
+            <li ng-class="{ active: isActive('/articles/Set 001 Primal Pack')}"><a href="#/articles/Set 001 Primal Pack">Set 001 Primal Pack</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#/articles/Set 002 Booster Pack">Set 002 Booster Pack</a></li>
-            <li><a href="#/articles/Set 002 Primal Pack">Set 002 Primal Pack</a></li>
+            <li ng-class="{ active: isActive('/articles/Set 002 Booster Pack')}"><a href="#/articles/Set 002 Booster Pack">Set 002 Booster Pack</a></li>
+            <li ng-class="{ active: isActive('/articles/Set 002 Primal Pack')}"><a href="#/articles/Set 002 Primal Pack">Set 002 Primal Pack</a></li>
             <li role="separator" class="divider"></li>
-            <li><a href="#/articles/Set 003 Booster Pack">Set 003 Booster Pack</a></li>
-            <li><a href="#/articles/Set 003 Primal Pack">Set 003 Primal Pack</a></li>
+            <li ng-class="{ active: isActive('/articles/Set 003 Booster Pack')}"><a href="#/articles/Set 003 Booster Pack">Set 003 Booster Pack</a></li>
+            <li ng-class="{ active: isActive('/articles/Set 003 Primal Pack')}"><a href="#/articles/Set 003 Primal Pack">Set 003 Primal Pack</a></li>
           </ul>
         </li>
         <li role="separator" class="divider"></li>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/about">About</a></li>
       </ul>
       <div class="form-group navbar-form navbar-right" ng-controller="SearchCtrl">
         <form class="form" ng-submit="startSearch(searchTerm)">
           <input ng-model="searchTerm" type="text" class="form-control" placeholder="Search" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;" /><button type="submit" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
         </form>
       </div>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#/about">About</a></li>
+      </ul>
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>

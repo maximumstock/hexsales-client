@@ -7,12 +7,6 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
     end: moment().format('YYYY-MM-DD')
   };
 
-  // pre-init
-  $scope.chartConfigs = {
-    platinum: {},
-    gold: {}
-  };
-
   getEconomyHistory(params);
 
 
@@ -20,13 +14,10 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
   function getEconomyHistory(params) {
     Api.getEconomyHistory(params)
       .then(function(res) {
-        $scope.economyData = {
-          platinum: res.data.platinum,
-          gold: res.data.gold
-        };
+        $scope.economyData = res.data;
 
-        buildRegularHistoryChart();
-        buildAreaHistoryChart();
+        buildRegularHistoryChart($scope.economyData);
+        buildAreaHistoryChart($scope.economyData);
 
       })
       .catch(function(err) {
@@ -39,62 +30,47 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
   function buildAreaHistoryChart(data) {
 
     var chartConfig = {
-      options: {
-        plotOptions: {
-          column: {
-            animation: false
-          },
-          area: {
-            stacking: 'percent',
-            lineColor: '#ffffff',
+      plotOptions: {
+        area: {
+          stacking: 'percent',
+          lineColor: '#ffffff',
+          lineWidth: 1,
+          marker: {
             lineWidth: 1,
-            marker: {
-              lineWidth: 1,
-              lineColor: '#ffffff'
-            },
-            threshold: null
-          },
-          series: {
-            enableMouseTracking: false,
-            dataGrouping: {
-              enabled: false,
-              dataTimeLabelsFormat: {
-                day: ['%A, %b %e, %Y', '%A, %b %e', '-%A, %b %e, %Y']
-              }
-            }
+            lineColor: '#ffffff'
           }
-        },
-        rangeSelector: {
-          selected: 5,
-          enabled: true
-        },
-        navigator: {
-          enabled: true
-        },
-        xAxis: {
-          type: "datetime"
-        },
-        chart: {
-          zoomType: 'x',
-          type: 'area'
-        },
-        lang: {
-          decimalPoint: '.',
-          thousandsSep: ','
-        },
-        legend: {
-          enabled: true,
-          align: "center",
-          symbolWidth: 30,
-          itemStyle: {
-            cursor: 'pointer',
-            fontSize: '12px'
-          }
-        },
-        tooltip: {
-          pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} Units)<br/>',
-          shared: true
         }
+      },
+      rangeSelector: {
+        enabled: true
+      },
+      navigator: {
+        enabled: true
+      },
+      xAxis: {
+        type: "datetime"
+      },
+      chart: {
+        zoomType: 'x',
+        type: 'area'
+      },
+      lang: {
+        decimalPoint: '.',
+        thousandsSep: ','
+      },
+      legend: {
+        enabled: true,
+        align: "center",
+        symbolWidth: 30,
+        itemStyle: {
+          cursor: 'pointer',
+          fontSize: '12px'
+        }
+      },
+      tooltip: {
+        pointFormat: '<span style="color:{series.color}">{series.name}</span>: <b>{point.percentage:.1f}%</b> ({point.y:,.0f} Units)<br/>',
+        shared: true,
+        valueDecimals: 0
       },
       subtitle: {
         text: "You can select/deselect single graph elements by clicking on their legend entry."
@@ -128,21 +104,15 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
         name: 'Epic',
         data: []
       }],
-      useHighStocks: true,
-      size: {
-        height: 500
-      }
+      useHighStocks: true
 
     };
 
-    // build configurations
-    $scope.chartConfigs.platinum.area = JSON.parse(JSON.stringify(chartConfig));
-    $scope.chartConfigs.gold.area = JSON.parse(JSON.stringify(chartConfig));
 
     ['platinum', 'gold'].forEach(function(cur) {
 
       // configure y axises labeling
-      var config = $scope.chartConfigs[cur].area;
+      var config = JSON.parse(JSON.stringify(chartConfig));
       config.yAxis.labels.format = "{value} %";
       config.yAxis.title.text = 'Percent';
 
@@ -156,7 +126,7 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
         'legendary': 3,
         'epic': 4
       };
-      $scope.economyData[cur].forEach(function(i) {
+      data[cur].forEach(function(i) {
 
         // skip entries without rarity
         if (!i.r || i.r === '') {
@@ -168,6 +138,10 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
         config.series[t[i.r.toLowerCase()]].data.push([d, i.q]);
 
       });
+      config.series.push(chartFlagSeries);
+
+      // add chart to DOM
+      $('#economy-area-' + cur.toLowerCase()).highcharts(config);
     });
 
   }
@@ -176,44 +150,42 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
   function buildRegularHistoryChart(data) {
 
     var chartConfig = {
-      options: {
-        rangeSelector: {
-          selected: 5,
-          enabled: true
-        },
-        navigator: {
-          enabled: true
-        },
-        xAxis: {
-          type: "datetime"
-        },
-        chart: {
-          zoomType: 'x'
-        },
-        lang: {
-          decimalPoint: '.',
-          thousandsSep: ','
-        },
-        legend: {
-          enabled: true,
-          align: "center",
-          symbolWidth: 30,
-          itemStyle: {
-            cursor: 'pointer',
-            fontSize: '12px'
-          }
-        },
-        tooltip: {
-          useHTML: true,
-          valueDecimals: 0,
-          crosshairs: [{
-            width: 1,
-            color: 'grey'
-          }, {
-            width: 1,
-            color: 'grey'
-          }]
+      rangeSelector: {
+        enabled: true
+      },
+      navigator: {
+        enabled: true
+      },
+      xAxis: {
+        type: "datetime"
+      },
+      chart: {
+        zoomType: 'x'
+      },
+      lang: {
+        decimalPoint: '.',
+        thousandsSep: ','
+      },
+      legend: {
+        enabled: true,
+        align: "center",
+        symbolWidth: 30,
+        itemStyle: {
+          cursor: 'pointer',
+          fontSize: '12px'
         }
+      },
+      tooltip: {
+        useHTML: true,
+        crosshairs: [{
+          width: 1,
+          color: 'grey'
+        }, {
+          width: 1,
+          color: 'grey'
+        }],
+        shared: true,
+        valueDecimals: 0
       },
       subtitle: {
         text: "You can select/deselect single graph elements by clicking on their legend entry."
@@ -224,6 +196,7 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
       yAxis: [{ // Primary yAxis
         labels: {
           x: -2,
+          y: -2,
           align: "right"
         },
         title: {},
@@ -233,7 +206,8 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
       }, { // Secondary yAxis
         labels: {
           align: 'left',
-          x: 2
+          x: 2,
+          y: -2
         },
         title: {},
         gridLineWidth: 0,
@@ -248,13 +222,10 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
       }
     };
 
-    $scope.chartConfigs.platinum.regular = JSON.parse(JSON.stringify(chartConfig));
-    $scope.chartConfigs.gold.regular = JSON.parse(JSON.stringify(chartConfig));
-
     ['platinum', 'gold'].forEach(function(cur) {
 
       // configure y axises labeling
-      var config = $scope.chartConfigs[cur].regular;
+      var config = JSON.parse(JSON.stringify(chartConfig));
       config.yAxis[0].labels.format = "{value} " + cur[0].toUpperCase();
       config.yAxis[0].title.text = cur[0].toUpperCase() + cur.slice(1, cur.length);
 
@@ -272,7 +243,7 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
 
       var quantitySeries = {
         name: "Quantity",
-        type: "line",
+        type: 'column',
         data: quantity,
         color: '#23b1b1',
         index: 2,
@@ -320,22 +291,37 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
         }
       };
 
-      var cumulativeQuantityAcc = 0,
-        cumulativeTotalAcc = 0;
+      var currentDate = null;
+      var qAcc = 0; // daily quantity acc variable
+      var tAcc = 0; // daily total acc variable
+      var cumulativeQuantityAcc = 0;
+      var cumulativeTotalAcc = 0;
 
-      $scope.economyData[cur].forEach(function(i) {
+      data[cur].forEach(function(i) {
 
         var d = Date.parse(i.d);
-        cumulativeQuantityAcc = cumulativeQuantityAcc + i.q;
-        cumulativeTotalAcc = cumulativeTotalAcc + i.t;
 
-        total.push([d, i.t]);
-        quantity.push([d, i.q]);
-        cumulativeQuantity.push([d, cumulativeQuantityAcc]);
-        cumulativeTotal.push([d, cumulativeTotalAcc]);
+        // if we hit a new date, push old data
+        if(currentDate !== d) {
+          quantity.push([d, qAcc]);
+          qAcc = 0;
+          total.push([d, tAcc]);
+          tAcc = 0;
+          cumulativeQuantity.push([d, cumulativeQuantityAcc]);
+          cumulativeTotal.push([d, cumulativeTotalAcc]);
+
+          currentDate = d;
+        } else {
+          // if it is the same date as before, just sum up the values
+          qAcc = qAcc + i.q;
+          tAcc = tAcc + i.t;
+          cumulativeQuantityAcc = cumulativeQuantityAcc + i.q;
+          cumulativeTotalAcc = cumulativeTotalAcc + i.t;
+        }
 
       });
-      config.series = [quantitySeries, totalSeries, cumulativeQuantitySeries, cumulativeTotalSeries];
+      config.series = [quantitySeries, totalSeries, cumulativeQuantitySeries, cumulativeTotalSeries, chartFlagSeries];
+      $('#economy-regular-' + cur.toLowerCase()).highcharts(config);
     });
 
   }

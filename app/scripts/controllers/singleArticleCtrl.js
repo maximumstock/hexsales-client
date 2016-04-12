@@ -134,7 +134,9 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
               }, {
                 width: 1,
                 color: 'grey'
-              }]
+              }],
+              shared: true,
+              valueDecimals: 0
             }
           },
           subtitle: {
@@ -252,7 +254,7 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
             quantity.push([d, i.q]);
 
           });
-          config.series = [quantitySeries, avgSeries, medianSeries, minMaxSeries];
+          config.series = [quantitySeries, avgSeries, medianSeries, minMaxSeries, chartFlagSeries];
         });
 
       })

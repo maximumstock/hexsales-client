@@ -42,3 +42,8 @@ div.navbar-header > a.navbar-brand {
 
 .faq-answer {
 }
+
+/* chart specific css */
+.chart {
+  min-height: 500px;
+}
