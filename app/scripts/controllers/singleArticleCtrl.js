@@ -250,7 +250,7 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
 
             minmax.push([d, i.mi, i.ma]);
             avg.push([d, i.a]);
-            median.push([d, i.me]);
+            median.push([d, i.m]);
             quantity.push([d, i.q]);
 
           });
