@@ -11,10 +11,10 @@
 <div class="col-xs-12">
   <div ng-if="articleBasics.type === 'Card'" card-img size="big" name="{{articleNameSanitized}}"></div>
   <div ng-if="articleBasics.type !== 'Card'">
-    <p><strong>Name:</strong> {{articleName || articleBasics.internal}}</p>
-    <p><strong>Rarity:</strong> {{articleBasics.rarity || '-'}}</p>
-    <p><strong>Set:</strong> {{articleBasics.setid || '-'}}</p>
-    <p><strong>Type:</strong> {{articleBasics.type || '-'}}</p>
+    <p><strong>Name:</strong> {{::articleName || ::articleBasics.internal}}</p>
+    <p><strong>Rarity:</strong> {{::articleBasics.rarity || '-'}}</p>
+    <p><strong>Set:</strong> {{::articleBasics.setid || '-'}}</p>
+    <p><strong>Type:</strong> {{::articleBasics.type || '-'}}</p>
   </div>
 </div>
 <!-- <div class="col-md-3">
@@ -44,7 +44,7 @@
 
 <!-- summary data -->
 <div class="col-xs-12">
-  <p>Here is a short summary of basic metrics of sales for <b>{{articleName}}</b> per currency.</p>
+  <p>Here is a short summary of basic metrics of sales for <b>{{::articleName}}</b> per currency.</p>
   <table class="table table-striped table-condensed table-bordered">
 
     <thead>
@@ -59,14 +59,14 @@
 
     <tbody>
       <tr ng-repeat="(timeframe, data) in summaryData">
-        <td ng-show="isNumber({{timeframe}})">Last {{timeframe}} days</td>
-        <td ng-hide="isNumber({{timeframe}})">{{timeframe}}</td>
-        <td>{{data.platinum.avg || 0}} P / {{data.gold.avg || 0}} G</td>
-        <td>{{data.platinum.median || 0}} P / {{data.gold.median || 0}} G</td>
-        <td>{{data.platinum.min || 0}} P / {{data.gold.min || 0}} G</td>
-        <td>{{data.platinum.max || 0}} P / {{data.gold.max || 0}} G</td>
-        <td>{{data.platinum.total || 0}} P / {{data.gold.total || 0}} G</td>
-        <td>{{data.platinum.quantity || 0}} / {{data.gold.quantity || 0}}</td>
+        <td ng-show="isNumber({{timeframe}})">Last {{::timeframe}} days</td>
+        <td ng-hide="isNumber({{timeframe}})">{{::timeframe}}</td>
+        <td>{{::data.platinum.avg || 0}} P / {{::data.gold.avg || 0}} G</td>
+        <td>{{::data.platinum.median || 0}} P / {{::data.gold.median || 0}} G</td>
+        <td>{{::data.platinum.min || 0}} P / {{::data.gold.min || 0}} G</td>
+        <td>{{::data.platinum.max || 0}} P / {{::data.gold.max || 0}} G</td>
+        <td>{{::data.platinum.total || 0}} P / {{::data.gold.total || 0}} G</td>
+        <td>{{::data.platinum.quantity || 0}} / {{::data.gold.quantity || 0}}</td>
       </tr>
     </tbody>
 

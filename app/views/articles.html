@@ -10,19 +10,27 @@
 <!-- display all articles -->
 <div class="col-xs-12">
 
-  <!-- cards -->
+	<div class="col-md-4">
+		<h4>Cards</h4>
+		<ul class="list-unstyled" id="card-list">
+			
+		</ul>
+	</div>
+
+  <!-- cards 
   <div class="col-md-4">
     <h4>Cards</h4>
     <ul class="list-unstyled">
       <li ng-repeat="article in allSortedArticles.cards"><a href="#/articles/{{article.name}}">{{article.name}} [ {{article.rarity[0] || '-'}} | {{article.setid || '-'}} ]</a></li>
     </ul>
-  </div>
+	</div>-->
 
   <!-- equipment -->
   <div class="col-md-4">
     <h4>Equipment</h4>
     <ul class="list-unstyled">
-      <li ng-repeat="article in allSortedArticles.equipment"><a href="#/articles/{{article.name}}">{{article.name}} [ {{article.rarity[0] || '-'}} | {{article.setid || '-'}} ]</a></li>
+      <li ng-repeat="article in allSortedArticles.equipment"><a href="#/articles/{{article.name}}">{{::article.name}} [
+					{{::article.rarity[0] || '-'}} | {{::article.setid || '-'}} ]</a></li>
     </ul>
   </div>
 
@@ -30,8 +38,9 @@
   <div class="col-md-4">
     <h4>Other</h4>
     <ul class="list-unstyled">
-      <li ng-repeat="article in allSortedArticles.others"><a href="#/articles/{{article.name}}">{{article.name}} [ {{article.rarity[0] || '-'}} | {{article.setid || '-'}} ]</a></li>
+      <li ng-repeat="article in allSortedArticles.others"><a href="#/articles/{{article.name}}">{{::article.name}} [
+					{{::article.rarity[0] || '-'}} | {{::article.setid || '-'}} ]</a></li>
     </ul>
-  </div>
+	</div>
 
 </div>
