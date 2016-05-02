@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SearchResultCtrl', ['$scope', '$routeParams', '$route', 'Api', function($scope, $routeParams, $route, Api) {
+angular.module('hexsales-client').controller('SearchResultCtrl', ['$scope', '$routeParams', '$route', 'Api', function($scope, $routeParams, $route, Api) {
 
   $scope.term = $routeParams.term || '';
 

@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api', function($scope, $location, $routeParams, Api) {
+angular.module('hexsales-client').controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api', function($scope, $location, $routeParams, Api) {
 
   $scope.articleName = $routeParams.name;
   $scope.articleNameSanitized = $scope.articleName;
@@ -20,7 +20,9 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
   // try to find the specified article
   // if the specified article does not seem to exist, redirect to main page
   // if the specified article does exist, load further data and render the page
-  Api.getArticleBasics({name: $scope.articleName})
+  Api.getArticleBasics({
+      name: $scope.articleName
+    })
     .then(function(res) {
       getArticleBasics();
       getHistories();
@@ -52,7 +54,7 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
     $scope.isNumber = angular.isNumber;
 
     var timeframes = [3, 7, 14, 21, 30, 60]; // find summaries for last {x} days
-    if($scope.articleBasics.type !== 'Pack') {
+    if ($scope.articleBasics.type !== 'Pack') {
       timeframes.push('Lifetime');
     }
     timeframes.forEach(function(timeframe) {
@@ -90,7 +92,7 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
 
     var params = {
       name: $scope.articleName,
-      start: '2014-12-01',
+      start: '2014-12-23',
       end: moment().format('YYYY-MM-DD')
     };
 
@@ -99,45 +101,36 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
         $scope.historyData.raw = res.data;
 
         var chartConfig = {
-          options: {
-            rangeSelector: {
-              selected: 1,
-              enabled: true
-            },
-            navigator: {
-              enabled: true
-            },
-            xAxis: {
-              type: "datetime"
-            },
-            chart: {
-              zoomType: 'x'
-            },
-            lang: {
-              decimalPoint: '.',
-              thousandsSep: ','
-            },
-            legend: {
-              enabled: true,
-              align: "center",
-              symbolWidth: 30,
-              itemStyle: {
-                cursor: 'pointer',
-                fontSize: '12px'
-              }
-            },
-            tooltip: {
-              useHTML: true,
-              crosshairs: [{
-                width: 1,
-                color: 'grey'
-              }, {
-                width: 1,
-                color: 'grey'
-              }],
-              shared: true,
-              valueDecimals: 0
+          rangeSelector: {
+            enabled: true,
+            selected: 1
+          },
+          xAxis: {
+            type: "datetime"
+          },
+          chart: {
+            zoomType: 'x'
+          },
+          legend: {
+            enabled: true,
+            align: "center",
+            symbolWidth: 30,
+            itemStyle: {
+              cursor: 'pointer',
+              fontSize: '12px'
             }
+          },
+          tooltip: {
+            useHTML: true,
+            crosshairs: [{
+              width: 1,
+              color: 'grey'
+            }, {
+              width: 1,
+              color: 'grey'
+            }],
+            shared: true,
+            valueDecimals: 0
           },
           subtitle: {
             text: "You can select/deselect single graph elements by clicking on their legend entry."
@@ -212,6 +205,10 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
             name: "Average",
             type: "line",
             data: avg,
+            marker: {
+              enabled: true,
+              radius: 3
+            },
             lineWidth: 2,
             color: "#000",
             index: 3,
@@ -224,6 +221,10 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
             name: "Median",
             type: "line",
             lineWidth: 3,
+            marker: {
+              enabled: true,
+              radius: 3
+            },
             data: median,
             color: "#23b1b1",
             visible: false,
@@ -247,15 +248,19 @@ app.controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api
           $scope.historyData.raw[cur].forEach(function(i) {
 
             var d = Date.parse(i.d);
-
             minmax.push([d, i.mi, i.ma]);
             avg.push([d, i.a]);
             median.push([d, i.m]);
             quantity.push([d, i.q]);
 
           });
-          config.series = [quantitySeries, avgSeries, medianSeries, minMaxSeries, chartFlagSeries];
+
+          config.series = [quantitySeries, avgSeries, medianSeries, minMaxSeries, getFlagSeries()];
+          // add chart to DOM
+          $('#article-history-' + cur.toLowerCase()).highcharts('StockChart', config);
+
         });
+
 
       })
       .catch(function(err) {

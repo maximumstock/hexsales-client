@@ -1,9 +1,9 @@
 'use strict';
 
-app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
+angular.module('hexsales-client').controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
 
   var params = {
-    start: '2014-01-01', //moment().subtract(3, 'months').format('YYYY-MM-DD'),
+    start: '2014-12-23', //moment().subtract(6, 'months').format('YYYY-MM-DD'),
     end: moment().format('YYYY-MM-DD')
   };
 
@@ -15,9 +15,8 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
     Api.getEconomyHistory(params)
       .then(function(res) {
         $scope.economyData = res.data;
-
         buildRegularHistoryChart($scope.economyData);
-        buildAreaHistoryChart($scope.economyData);
+        //buildAreaHistoryChart($scope.economyData);
 
       })
       .catch(function(err) {
@@ -42,7 +41,8 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
         }
       },
       rangeSelector: {
-        enabled: true
+        enabled: true,
+        selected: 1
       },
       navigator: {
         enabled: true
@@ -138,10 +138,10 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
         config.series[t[i.r.toLowerCase()]].data.push([d, i.q]);
 
       });
-      config.series.push(chartFlagSeries);
+      config.series.push(getFlagSeries());
 
       // add chart to DOM
-      $('#economy-area-' + cur.toLowerCase()).highcharts(config);
+      $('#economy-area-' + cur.toLowerCase()).highcharts('StockChart', config);
     });
 
   }
@@ -150,9 +150,6 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
   function buildRegularHistoryChart(data) {
 
     var chartConfig = {
-      rangeSelector: {
-        enabled: true
-      },
       navigator: {
         enabled: true
       },
@@ -165,6 +162,10 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
       lang: {
         decimalPoint: '.',
         thousandsSep: ','
+      },
+      rangeSelector: {
+        enabled: true,
+        selected: 1
       },
       legend: {
         enabled: true,
@@ -256,6 +257,10 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
       var totalSeries = {
         name: "Total",
         type: "line",
+        marker: {
+          enabled: true,
+          radius: 3
+        },
         data: total,
         lineWidth: 2,
         color: "#000",
@@ -302,7 +307,7 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
         var d = Date.parse(i.d);
 
         // if we hit a new date, push old data
-        if(currentDate !== d) {
+        if (currentDate !== d) {
           quantity.push([d, qAcc]);
           qAcc = 0;
           total.push([d, tAcc]);
@@ -311,17 +316,16 @@ app.controller('EconomyCtrl', ['$scope', 'Api', function($scope, Api) {
           cumulativeTotal.push([d, cumulativeTotalAcc]);
 
           currentDate = d;
-        } else {
-          // if it is the same date as before, just sum up the values
-          qAcc = qAcc + i.q;
-          tAcc = tAcc + i.t;
-          cumulativeQuantityAcc = cumulativeQuantityAcc + i.q;
-          cumulativeTotalAcc = cumulativeTotalAcc + i.t;
         }
+        // if it is the same date as before, just sum up the values
+        qAcc = qAcc + i.q;
+        tAcc = tAcc + i.t;
+        cumulativeQuantityAcc = cumulativeQuantityAcc + i.q;
+        cumulativeTotalAcc = cumulativeTotalAcc + i.t;
 
       });
-      config.series = [quantitySeries, totalSeries, cumulativeQuantitySeries, cumulativeTotalSeries, chartFlagSeries];
-      $('#economy-regular-' + cur.toLowerCase()).highcharts(config);
+      config.series = [quantitySeries, totalSeries, cumulativeQuantitySeries, cumulativeTotalSeries, getFlagSeries()];
+      $('#economy-regular-' + cur.toLowerCase()).highcharts('StockChart', config);
     });
 
   }

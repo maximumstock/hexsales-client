@@ -1,7 +1,5 @@
 'use strict';
 
-var shim = require('browserify-shim');
-
 module.exports = function(grunt) {
 	grunt.initConfig({
 		cssmin: {
@@ -11,40 +9,47 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'dist/css/output.css': ['app/styles/main.css', 'app/styles/cardimg.css']
+					'dist/app/css/output.css': ['app/styles/main.css', 'app/styles/cardimg.css']
 				}
 			}
 		},
 		uglify: {
-			files: {
-				'dist/js/app.min.js': ['app/app.js']
-			}
-		},
-		browserify2: {
-			compile: {
-				entry: './app/app.js',
-				compile: './dist/js/app.min.js',
-				beforeHook: function(bundle) {
-					shim(bundle, {
-						jquery: {
-							path: './bower_components/jquery/dist/jquery.min.js',
-							exports: '$'
-						}
-					});
+			my_target: {
+ 		  	files: {
+					'dist/app/js/deps.min.js': ['bower_components/jquery/dist/jquery.min.js', 
+																	'bower_components/bootstrap/dist/js/bootstrap.min.js',
+																	'bower_components/angular/angular.min.js',
+																	'bower_components/angular-route/angular-route.min.js',
+																	'bower_components/moment/min/moment.min.js',
+																	'bower_components/numeral/min/numeral.min.js',
+																	'bower_components/highcharts/highstock.js',
+																	'bower_components/highcharts/highcharts-more.js',
+																	'bower_components/highcharts/modules/exporting.js'],
+ 		    	'dist/app/js/app.min.js': ['app/app.js', 'app/flags.js', 'app/globalHighchartOptions.js', 'app/scripts/**/*.js']
+ 		    
 				}
 			}
+		},
+		copy: {
+			main: {
+				files: [
+					{expand: true, cwd: 'app/views', src: '*', dest: 'dist/app/views'},
+					{expand: true, cwd: 'app/images', src: '*', dest: 'dist/app/images'},
+					{expand: true, cwd: 'bower_components/bootstrap/dist', src: '**', dest: 'dist/app/css/bootstrap'}
+				]
+			}
 		}
-	 });
+	});
 
 
 	grunt.loadNpmTasks('grunt-contrib-cssmin');
 	grunt.loadNpmTasks('grunt-contrib-uglify');
-	grunt.loadNpmTasks('grunt-browserify2');
-	
+	grunt.loadNpmTasks('grunt-contrib-copy');
+
 	grunt.registerTask('do', [
 		'cssmin',
-	//	'browserify2:compile',
-		'uglify'
+		'uglify',
+		'copy'
 	]);
 
 };

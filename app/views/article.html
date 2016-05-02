@@ -1,7 +1,8 @@
 <!-- breadcrumb nav -->
 <div class="col-xs-12">
   <ol class="breadcrumb">
-    <li><a href="#/articles">All Articles</a></li>
+		<li>hexsales.net</li>
+		<li>All Articles</li>
     <li class="active">{{articleName}}</li>
   </ol>
   <hr/>
@@ -11,10 +12,10 @@
 <div class="col-xs-12">
   <div ng-if="articleBasics.type === 'Card'" card-img size="big" name="{{articleNameSanitized}}"></div>
   <div ng-if="articleBasics.type !== 'Card'">
-    <p><strong>Name:</strong> {{::articleName || ::articleBasics.internal}}</p>
-    <p><strong>Rarity:</strong> {{::articleBasics.rarity || '-'}}</p>
-    <p><strong>Set:</strong> {{::articleBasics.setid || '-'}}</p>
-    <p><strong>Type:</strong> {{::articleBasics.type || '-'}}</p>
+    <p><strong>Name:</strong> {{::articleName || articleBasics.internal}}</p>
+    <p><strong>Rarity:</strong> {{articleBasics.rarity || '-'}}</p>
+    <p><strong>Set:</strong> {{articleBasics.setid || '-'}}</p>
+    <p><strong>Type:</strong> {{articleBasics.type || '-'}}</p>
   </div>
 </div>
 <!-- <div class="col-md-3">
@@ -78,5 +79,7 @@
 </div>
 
 <!-- history data -->
-<highchart id="article-platinum" config="chartConfigs.platinum" class="col-xs-12"></highchart>
-<highchart id="article-gold" config="chartConfigs.gold" class="col-xs-12"></highchart>
+<!--<highchart id="article-platinum" config="chartConfigs.platinum" class="col-xs-12"></highchart>
+<highchart id="article-gold" config="chartConfigs.gold" class="col-xs-12"></highchart>-->
+<div class="col-xs-12 chart" id="article-history-platinum"></div>
+<div class="col-xs-12 chart" id="article-history-gold"></div>
