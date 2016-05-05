@@ -20,7 +20,7 @@ angular.module('hexsales-client').controller('SearchResultCtrl', ['$scope', '$ro
         // filter out all cards
         $scope.sortedSearchResults = {
           cards: $scope.searchResults.filter(function(e) { return e.type === 'Card'; }),
-          equipment: $scope.searchResults.filter(function(e) { return e.type === 'Equipment'; }),
+					// equipment: $scope.searchResults.filter(function(e) { return e.type === 'Equipment'; }),
           others: $scope.searchResults.filter(function(e) { return e.type !== 'Card' && e.type !== 'Equipment'; })
         };
       })

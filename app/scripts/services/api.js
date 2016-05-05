@@ -47,6 +47,20 @@ angular.module('hexsales-client')
       return $http.get(url);
     }
 
+    this.getMostSoldArticles = function(params) {
+      var url = apiUrl + '/economy/mostsold?q=1';
+      if(params.start) {
+        url = url + '&start=' +  params.start;
+      }
+      if(params.end) {
+        url = url + '&end=' + params.end;
+      }
+      if(params.limit) {
+        url = url + '&limit=' + params.limit;
+      }
+      return $http.get(url);
+    }
+
     // this.getConversionRate = function(params) {
     //   return $http.get(apiUrl + '/articles/' + params.name + '/conversion');
     // };

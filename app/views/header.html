@@ -14,11 +14,12 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li style="font-size: 20px;"><a href="#/about"><strong>hex</strong><span style="font-weight: light;">sales</span></a></li>
-        <!-- <li class="active"><a href="#/overview">Overview</a></li> -->
-        <li ng-class="{ active: isActive('/')}"><a href="#/">Economy</a></li>
+        <li style="font-size: 20px;"><a style="padding-left: 0px;" href="#/about"><strong>hex</strong><span style="font-weight: light;">sales</span></a></li>
+        <li ng-class="{ active: isActive('/')}"><a href="#/">Daily Report</a></li>
+        <li ng-class="{ active: isActive('/economy')}"><a href="#/economy">Economy</a></li>
         <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Packs <span class="caret"></span></a>
+          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+						aria-expanded="false">Sets <span class="caret"></span></a>
           <ul class="dropdown-menu">
             <li ng-class="{ active: isActive('/articles/Set 001 Booster Pack')}"><a href="#/articles/Set 001 Booster Pack">Set 001 Booster Pack</a></li>
             <li ng-class="{ active: isActive('/articles/Set 001 Primal Pack')}"><a href="#/articles/Set 001 Primal Pack">Set 001 Primal Pack</a></li>

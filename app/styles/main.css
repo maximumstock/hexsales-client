@@ -12,6 +12,11 @@ div#content {
   margin: 0 4% 40px 4%;
 }
 
+/* X% margin left and right for #news */
+div#news {
+	margin: 0 5% 0 5%;
+}
+
 /* centers the icon in the header and makes it look not shit */
 div.navbar-header > a.navbar-brand {
   padding: 0px;

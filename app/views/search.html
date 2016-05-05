@@ -6,11 +6,12 @@
   <h4>Cards</h4>
   <ul class="list-unstyled">
     <li ng-repeat="e in sortedSearchResults.cards">
-      <a href="#/articles/{{e.name}}">{{::e.name}} [ {{::e.rarity[0] || '-'}} | {{::e.setid || '-'}} ]</a>
+      <a href="#/articles/{{e.name}}">{{::e.name}} [ {{::e.rarity[0] || '-'}} ]</a>
     </li>
   </ul>
 </div>
 
+<!--
 <div ng-show="sortedSearchResults.equipment.length > 0" class="col-md-4 col-xs-12">
   <h4>Equipment</h4>
   <ul class="list-unstyled">
@@ -19,12 +20,13 @@
     </li>
   </ul>
 </div>
+-->
 
 <div ng-show="sortedSearchResults.others.length > 0" class="col-md-4 col-xs-12">
   <h4>Other</h4>
   <ul class="list-unstyled">
     <li ng-repeat="e in sortedSearchResults.others">
-      <a href="#/articles/{{e.name}}">{{::e.name}} [ {{::e.rarity[0] || '-'}} | {{::e.setid || '-'}} ]</a>
+      <a href="#/articles/{{e.name}}">{{::e.name}} [ {{::e.rarity[0] || '-'}} ]</a>
     </li>
   </ul>
 </div>

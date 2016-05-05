@@ -3,7 +3,11 @@
 angular.module('hexsales-client', ['ngRoute'])
 	.config(['$routeProvider', function($routeProvider) {
 	  $routeProvider
-	    .when('/', {
+			.when('/', {
+				controller: 'DailyReportCtrl',
+				templateUrl: 'app/views/dailyreport.html'
+			})
+	    .when('/economy', {
 	      controller: 'EconomyCtrl',
 	      templateUrl: 'app/views/economy.html'
 	    })

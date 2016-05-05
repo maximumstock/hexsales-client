@@ -12,10 +12,10 @@
 <div class="col-xs-12">
   <div ng-if="articleBasics.type === 'Card'" card-img size="big" name="{{articleNameSanitized}}"></div>
   <div ng-if="articleBasics.type !== 'Card'">
-    <p><strong>Name:</strong> {{::articleName || articleBasics.internal}}</p>
-    <p><strong>Rarity:</strong> {{articleBasics.rarity || '-'}}</p>
-    <p><strong>Set:</strong> {{articleBasics.setid || '-'}}</p>
-    <p><strong>Type:</strong> {{articleBasics.type || '-'}}</p>
+    <h1>{{::articleName}}</h1>
+    <p ng-show="articleBasics.rarity != null"><strong>Rarity:</strong> {{articleBasics.rarity || '-'}}</p>
+    <p ng-show="articleBasics.set != null"><strong>Set:</strong> {{articleBasics.setid || '-'}}</p>
+    <p ng-show="articleBasics.type != null"><strong>Type:</strong> {{articleBasics.type || '-'}}</p>
   </div>
 </div>
 <!-- <div class="col-md-3">
@@ -49,7 +49,7 @@
   <table class="table table-striped table-condensed table-bordered">
 
     <thead>
-      <th>Timespan</th>
+      <th>Timespan <span class="caret"></span></th>
       <th>Average Price</th>
       <th>Median Price</th>
       <th>Minimum Price</th>
