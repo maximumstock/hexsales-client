@@ -4,24 +4,33 @@ angular.module('hexsales-client')
   .directive('cardImg', function() {
     return {
       scope: {
-        name: '@',
-        size: '@'
+        name: '@'
       },
       template: '<div> \
                     <div class="portrait-container card-portrait"> \
-                      <img ng-src="http://hex.tcgbrowser.com/images/cards/{{size}}/{{name}}.jpg" /> \
                     </div> \
                     <!--<p class="subtitle">Image from hex.tcgbrowser.com</p>--> \
                 </div>',
       link: function(scope, element, attrs) {
         $('.portrait-container').hide();
-        $('.portrait-container img')
-          .load(function() {
-            $('.portrait-container').show();
-          })
-          .error(function() {
-            $('#article-image-container').remove();
-          });
+		
+				var imgHost = "http://migration.tcgbrowser.com/files/full-size-jpg/";
+
+				// get uuid from hex.tcgbrowser.com
+				$.getJSON('http://hex.tcgbrowser.com/tools/tooltips/cardbyname.php?name=' + scope.name + '&callback=?', function(data) {
+			
+					if (data.image) {
+          
+						var $img = $('<img src="' + imgHost + data.guid + '.jpg" />')
+							.on('error', function() {return;})
+							.on('load', function() {
+								$('.card-portrait').append($img).show();
+							});
+
+					} 
+				
+				});
+				
       }
     };
   });

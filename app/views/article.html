@@ -10,7 +10,7 @@
 
 <!-- basic details -->
 <div class="col-xs-12">
-  <div ng-if="articleBasics.type === 'Card'" card-img size="big" name="{{articleNameSanitized}}"></div>
+  <div ng-if="articleBasics.type === 'Card'" card-img  name="{{articleNameSanitized}}"></div>
   <div ng-if="articleBasics.type !== 'Card'">
     <h1>{{::articleName}}</h1>
     <p ng-show="articleBasics.rarity != null"><strong>Rarity:</strong> {{articleBasics.rarity || '-'}}</p>

@@ -10,8 +10,8 @@
 }
 
 .card-portrait {
-	width: 215px;
-	height: 300px;
+	width: 322px;
+	height: 450px;
 	margin: 8px;
 	background: url("http://hex.tcgbrowser.com/images/cards/cardback-big.jpg") no-repeat;
 	background-size: 215px 300px;
@@ -20,8 +20,8 @@
 }
 
 .card-portrait img {
-	width: 215px;
-	height: 300px;
+	width: 322px;
+	height: 450px;
 }
 
 p.subtitle {
