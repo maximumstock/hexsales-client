@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('hexsales-client').controller('SearchResultCtrl', ['$scope', '$routeParams', '$route', 'Api', function($scope, $routeParams, $route, Api) {
+angular.module('hexsales-client').controller('SearchResultCtrl', ['$scope', '$routeParams', '$route', '$location', 'Api', function($scope, $routeParams, $route, $location, Api) {
 
   $scope.term = $routeParams.term || '';
 
@@ -17,6 +17,12 @@ angular.module('hexsales-client').controller('SearchResultCtrl', ['$scope', '$ro
           // filter out all without a name
           return e.name !== null;
         });
+
+				// if there is only one result, redirect immediately;
+				if($scope.searchResults.length === 1) {
+					$location.path('/articles/' + $scope.searchResults[0].name);
+				}
+
         // filter out all cards
         $scope.sortedSearchResults = {
           cards: $scope.searchResults.filter(function(e) { return e.type === 'Card'; }),
