@@ -38,8 +38,10 @@
       </ul>
       <div class="form-group navbar-form navbar-right" ng-controller="SearchCtrl">
         <form class="form" ng-submit="startSearch(searchTerm)">
-          <input ng-model="searchTerm" type="text" class="form-control" placeholder="Search" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;" /><button type="submit" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-        </form>
+          <input ng-model="searchTerm" list="articleNameList" autocomplete="on"type="text" class="form-control" placeholder="Search" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;" /><button type="submit" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
+		  <datalist id="articleNameList">
+		  </datalist>
+		</form>
       </div>
       <ul class="nav navbar-nav navbar-right">
         <li><a href="#/about">About</a></li>
