@@ -15,7 +15,7 @@ angular.module('hexsales-client')
         $('.portrait-container').hide();
 
 			// load picture from gameforge
-			var imgUrl = 'http://cards.hex.gameforge.com/cardsdb/en/' + scope.name + '.png';
+			var imgUrl = 'https://cards.hex.gameforge.com/cardsdb/en/' + scope.name + '.png';
 			var $img = $('<img src="' + imgUrl + '" />')
 						.on('error', function() {return;})
 						.on('load', function() {
