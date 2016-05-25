@@ -1,29 +1,24 @@
-.portrait-container {
-  background: none repeat scroll 0 0 #1E2531;
-  border: 1px solid #8E846B;
-	box-shadow: 0 0 6px #8E846B;
-  border-radius: 8px;
-  z-index: 9999;
-	line-height: 0;
-  width: 337px;
-  vertical-align: middle;
-}
-
 .card-portrait {
+	background: none repeat scroll 0 0 #1E2531;
+	border: 1px solid #8E846B;
+	box-shadow: 0 0 6px #8E846B;
+	z-index: 9999;
+	line-height: 0;
+	vertical-align: middle;
 	width: 322px;
-	height: 450px;
+	height: 441px;
 	margin: 8px;
-	background: url("http://hex.tcgbrowser.com/images/cards/cardback-big.jpg") no-repeat;
-	background-size: 215px 300px;
-	border-radius: 12px;
+	background-color: black;
+	background-size: 322px 441px;
+	border-radius: 14px;
 	overflow: hidden;
 }
 
 .card-portrait img {
-	width: 322px;
-	height: 450px;
+	width: 320px;
+	height: 440px;
 }
 
 p.subtitle {
-  font-size: 10px;
+	font-size: 10px;
 }

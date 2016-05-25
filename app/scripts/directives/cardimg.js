@@ -9,7 +9,6 @@ angular.module('hexsales-client')
       template: '<div> \
                     <div class="portrait-container card-portrait"> \
                     </div> \
-                    <!--<p class="subtitle">Image from hex.tcgbrowser.com</p>--> \
                 </div>',
       link: function(scope, element, attrs) {
         $('.portrait-container').hide();
