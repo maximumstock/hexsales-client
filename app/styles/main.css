@@ -1,20 +1,40 @@
 body {
-  /* border: 2px solid red; */
+	font-size: 13px;
+}
+
+hr {
+	margin: 10px 0 10px 0;
+}
+
+h1 {
+	margin: 5px 0 10px 0;
+	font-size: 24px;
+}
+
+h2 {
+	margin: 5px 0 10px 0;
+	font-size: 20px;
+}
+
+h3 {
+	margin: 5px 0 10px 0;
+	font-size: 16px;
 }
 
 /* X% margin left and right for the content of the header */
 nav.navbar > .container-fluid {
-  margin: 0 4% 0 4%;
+  margin: 0 1% 0 1%;
 }
 
 /* X% margin left and right for #content */
 div#content {
-  margin: 0 4% 40px 4%;
+  margin: 0 0 40px 0;
 }
 
 /* X% margin left and right for #news */
 div#news {
-	margin: 0 5% 0 5%;
+	padding: 0;
+	margin-top: -20px;
 }
 
 /* centers the icon in the header and makes it look not shit */
@@ -51,4 +71,13 @@ div.navbar-header > a.navbar-brand {
 /* chart specific css */
 .chart {
   min-height: 500px;
+}
+
+/* remove border radius from news div and navbar */
+.navbar {
+	border-radius: 0px;
+}
+
+.alert {
+	border-radius: 0px;
 }
