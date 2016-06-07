@@ -181,6 +181,28 @@ angular.module('hexsales-client').controller('SingleArticleCtrl', ['$scope', '$l
           // customize chart title
           config.title.text = 'History for <b>' + $scope.articleName + '</b> - ' + cur[0].toUpperCase() + cur.slice(1, cur.length);
 
+		  // customize selected zoom stage of x-axis
+		  // depending on the date string of the most recent string, it is needed to zoom out of the 3 month window,
+		  // which is the default in `chartConfig`. we have to do that to make sure that the most recent date is
+		  // displayed in the graph
+		  var monthDiff = moment().diff(moment($scope.historyData.raw[cur][$scope.historyData.raw[cur].length - 1].d), 'months');
+		  if(monthDiff >= 12) {
+			// just give up, set the chart time window to display all sales
+			config.rangeSelector.selected = 5;
+		  } 
+		  if(monthDiff < 12) {
+			// set time window to last year
+			config.rangeSelector.selected = 4;
+		  } 
+		  if(monthDiff < 6) {
+			// set time window to last 6 months
+			config.rangeSelector.selected = 2;
+		  }
+		  if(monthDiff < 3) {
+			// we gucci, since the latest data is within the default window of 3 months
+			config.rangeSelector.selected = 1;
+		  }
+
           // start parsing series data
           var min = [],
             max = [],
