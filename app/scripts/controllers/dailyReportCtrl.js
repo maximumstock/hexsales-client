@@ -35,7 +35,7 @@ angular.module('hexsales-client')
     getMostSoldArticles({
       start: moment().subtract(3, 'days').format('YYYY-MM-DD'),
       end: moment().format('YYYY-MM-DD'),
-      limit: 60
+      limit: 100
     });
 
 
