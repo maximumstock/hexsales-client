@@ -170,6 +170,12 @@ angular.module('hexsales-client').controller('SingleArticleCtrl', ['$scope', '$l
 
                 ['platinum', 'gold'].forEach(function(cur) {
 
+                    // if there is no data for a specific currency, stop trying to draw a graph
+                    if($scope.historyData.raw[cur].length === 0) {
+                        $('#article-history-' + cur.toLowerCase()).remove();
+                        return;
+                    }
+
                     // configure y axises labeling
                     var config = $scope.chartConfigs[cur];
                     config.yAxis[0].labels.format = "{value} " + cur[0].toUpperCase();
