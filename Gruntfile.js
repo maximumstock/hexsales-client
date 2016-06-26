@@ -9,8 +9,7 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'dist/app/css/output.css': ['bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css',
-                                                'app/styles/main.css',
+					'dist/app/css/output.css': ['app/styles/main.css',
                                                 'app/styles/cardimg.css']
 				}
 			}
@@ -38,7 +37,8 @@ module.exports = function(grunt) {
 				files: [
 					{expand: true, cwd: 'app/views', src: '*', dest: 'dist/app/views'},
 					{expand: true, cwd: 'app/images', src: '*', dest: 'dist/app/images'},
-					{expand: true, cwd: 'bower_components/bootstrap/dist', src: '**', dest: 'dist/app/css/bootstrap'}
+					{expand: true, cwd: 'bower_components/bootstrap/dist', src: '**', dest: 'dist/app/css/bootstrap'},
+                    {expand: true, cwd: 'bower_components/jquery-ui', src: '**', dest: 'dist/app/css/jquery-ui'}
 				]
 			}
 		}
