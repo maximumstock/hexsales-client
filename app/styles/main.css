@@ -2,6 +2,28 @@ body {
 	font-size: 13px;
 }
 
+/* fix jQuery UI autocomplete search bar font */
+.ui-widget input, .ui-widget li {
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+/* limit height of autocomplete list and make it scrollable so it doesn't look like total garbage */
+ul.ui-autocomplete {
+    max-height: 260px; /* 10*26px */
+    overflow: scroll;
+}
+
+ul.ui-autocomplete {
+    border-radius: 4px;
+}
+
+/* change ugly greyish background for selected list items */
+.ui-state-focus {
+    background: none !important;
+    background-color: #337ab7 !important;
+    color: white !important;
+}
+
 hr {
 	margin: 10px 0 10px 0;
 }

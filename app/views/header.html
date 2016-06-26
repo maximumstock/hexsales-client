@@ -1,51 +1,56 @@
 <nav class="navbar navbar-default" ng-controller="HeaderCtrl">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <!-- <a class="navbar-brand" href="#"><img width="46" src="app/images/hexsales_logo.png" /></a> -->
-    </div>
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <!-- <a class="navbar-brand" href="#"><img width="46" src="app/images/hexsales_logo.png" /></a> -->
+        </div>
 
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li style="font-size: 20px;"><a style="padding-left: 0px;" href="#/about"><strong>hex</strong><span style="font-weight: light;">sales</span></a></li>
-        <li ng-class="{ active: isActive('/')}"><a href="#/">Daily Report</a></li>
-        <li ng-class="{ active: isActive('/economy')}"><a href="#/economy">Economy</a></li>
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-						aria-expanded="false">Sets <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li ng-class="{ active: isActive('/articles/Set 001 Booster Pack')}"><a href="#/articles/Set 001 Booster Pack">Set 001 Booster Pack</a></li>
-            <li ng-class="{ active: isActive('/articles/Set 001 Primal Pack')}"><a href="#/articles/Set 001 Primal Pack">Set 001 Primal Pack</a></li>
-            <li role="separator" class="divider"></li>
-            <li ng-class="{ active: isActive('/articles/Set 002 Booster Pack')}"><a href="#/articles/Set 002 Booster Pack">Set 002 Booster Pack</a></li>
-            <li ng-class="{ active: isActive('/articles/Set 002 Primal Pack')}"><a href="#/articles/Set 002 Primal Pack">Set 002 Primal Pack</a></li>
-            <li role="separator" class="divider"></li>
-            <li ng-class="{ active: isActive('/articles/Set 003 Booster Pack')}"><a href="#/articles/Set 003 Booster Pack">Set 003 Booster Pack</a></li>
-            <li ng-class="{ active: isActive('/articles/Set 003 Primal Pack')}"><a href="#/articles/Set 003 Primal Pack">Set 003 Primal Pack</a></li>
-            <li role="separator" class="divider"></li>
-            <li ng-class="{ active: isActive('/articles/Set 004 Booster Pack')}"><a href="#/articles/Set 004 Booster Pack">Set 004 Booster Pack</a></li>
-            <li ng-class="{ active: isActive('/articles/Set 004 Primal Pack')}"><a href="#/articles/Set 004 Primal Pack">Set 004 Primal Pack</a></li>
-          </ul>
-        </li>
-        <li role="separator" class="divider"></li>
-      </ul>
-      <div class="form-group navbar-form navbar-right" ng-controller="SearchCtrl">
-        <form class="form" ng-submit="startSearch(searchTerm)">
-          <input ng-model="searchTerm" list="articleNameList" autocomplete="on"type="text" class="form-control" placeholder="Search" style="border-bottom-right-radius: 0px; border-top-right-radius: 0px;" /><button type="submit" style="border-bottom-left-radius: 0px; border-top-left-radius: 0px;" class="btn btn-primary"><span class="glyphicon glyphicon-search"></span></button>
-		  <datalist id="articleNameList">
-		  </datalist>
-		</form>
-      </div>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#/about">About</a></li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav">
+                <li style="font-size: 20px;"><a style="padding-left: 0px;" href="#/about"><strong>hex</strong><span style="font-weight: light;">sales</span></a></li>
+                <li ng-class="{ active: isActive('/')}"><a href="#/">Daily Report</a></li>
+                <li ng-class="{ active: isActive('/economy')}"><a href="#/economy">Economy</a></li>
+                <li class="dropdown">
+                    <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Sets <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li ng-class="{ active: isActive('/articles/Set 001 Booster Pack')}"><a href="#/articles/Set 001 Booster Pack">Set 001 Booster Pack</a></li>
+                        <li ng-class="{ active: isActive('/articles/Set 001 Primal Pack')}"><a href="#/articles/Set 001 Primal Pack">Set 001 Primal Pack</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li ng-class="{ active: isActive('/articles/Set 002 Booster Pack')}"><a href="#/articles/Set 002 Booster Pack">Set 002 Booster Pack</a></li>
+                        <li ng-class="{ active: isActive('/articles/Set 002 Primal Pack')}"><a href="#/articles/Set 002 Primal Pack">Set 002 Primal Pack</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li ng-class="{ active: isActive('/articles/Set 003 Booster Pack')}"><a href="#/articles/Set 003 Booster Pack">Set 003 Booster Pack</a></li>
+                        <li ng-class="{ active: isActive('/articles/Set 003 Primal Pack')}"><a href="#/articles/Set 003 Primal Pack">Set 003 Primal Pack</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li ng-class="{ active: isActive('/articles/Set 004 Booster Pack')}"><a href="#/articles/Set 004 Booster Pack">Set 004 Booster Pack</a></li>
+                        <li ng-class="{ active: isActive('/articles/Set 004 Primal Pack')}"><a href="#/articles/Set 004 Primal Pack">Set 004 Primal Pack</a></li>
+                    </ul>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li><a href="#/about">About</a></li>
+            </ul>
+            <div class="form-group navbar-form navbar-right" ng-controller="SearchCtrl">
+
+                <form class="form" ng-submit="startSearch()">
+
+                    <div class="ui-widget">
+                        <input id="search-bar" ng-model="searchTerm" list="articleNameList" autocomplete="on" type="text" class="form-control" placeholder="Search" style="width: 250px; border-bottom-right-radius: 0px; border-top-right-radius: 0px;" />
+                        <button type="submit" style="margin-left: -7px; border-bottom-left-radius: 0px; border-top-left-radius: 0px;" class="btn btn-primary">
+                            <span class="glyphicon glyphicon-search"></span>
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
 </nav>

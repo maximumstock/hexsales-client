@@ -9,24 +9,27 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'dist/app/css/output.css': ['app/styles/main.css', 'app/styles/cardimg.css']
+					'dist/app/css/output.css': ['bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css',
+                                                'app/styles/main.css',
+                                                'app/styles/cardimg.css']
 				}
 			}
 		},
 		uglify: {
 			my_target: {
  		  	files: {
-					'dist/app/js/deps.min.js': ['bower_components/jquery/dist/jquery.min.js', 
-																	'bower_components/bootstrap/dist/js/bootstrap.min.js',
-																	'bower_components/angular/angular.min.js',
-																	'bower_components/angular-route/angular-route.min.js',
-																	'bower_components/moment/min/moment.min.js',
-																	'bower_components/numeral/min/numeral.min.js',
-																	'bower_components/highcharts/highstock.js',
-																	'bower_components/highcharts/highcharts-more.js',
-																	'bower_components/highcharts/modules/exporting.js'],
+					'dist/app/js/deps.min.js': ['bower_components/jquery/dist/jquery.min.js',
+												'bower_components/bootstrap/dist/js/bootstrap.min.js',
+												'bower_components/angular/angular.min.js',
+												'bower_components/angular-route/angular-route.min.js',
+												'bower_components/moment/min/moment.min.js',
+												'bower_components/numeral/min/numeral.min.js',
+												'bower_components/highcharts/highstock.js',
+												'bower_components/highcharts/highcharts-more.js',
+												'bower_components/highcharts/modules/exporting.js',
+                                                'bower_components/jquery-ui/jquery-ui.min.js'],
  		    	'dist/app/js/app.min.js': ['app/app.js', 'app/flags.js', 'app/globalHighchartOptions.js', 'app/scripts/**/*.js']
- 		    
+
 				}
 			}
 		},
