@@ -11,11 +11,11 @@ angular.module('hexsales-client', ['ngRoute'])
 	      controller: 'EconomyCtrl',
 	      templateUrl: 'app/views/economy.html'
 	    })
-	    .when('/articles/:name', {
+	    .when('/articles/:name*', {
 	      controller: 'SingleArticleCtrl',
 	      templateUrl: 'app/views/article.html'
 	    })
-	    .when('/search/:term', {
+	    .when('/search/:term*', {
 	      controller: 'SearchResultCtrl',
 	      templateUrl: 'app/views/search.html'
 	    })
