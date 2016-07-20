@@ -2,9 +2,9 @@
 
 Highcharts.setOptions({
 
-	lang: {
-		decimalPoint: '.',
-		thousandsSep: ','
-	}
-	
+  lang: {
+    decimalPoint: '.',
+    thousandsSep: ','
+  }
+
 });
