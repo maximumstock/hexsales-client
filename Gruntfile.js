@@ -9,8 +9,11 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'dist/app/css/output.css': ['app/styles/main.css',
-                                                'app/styles/cardimg.css']
+					'dist/app/css/output.css': ['bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css',
+                                      'bower_components/bootstrap/dist/css/bootstrap.min.css',
+                                      'app/styles/main.css',
+                                      'app/styles/cardimg.css',
+                                      'bower_components/ng-table/dist/ng-table.min.css']
 				}
 			}
 		},
@@ -27,7 +30,8 @@ module.exports = function(grunt) {
 												'bower_components/highcharts/highcharts-more.js',
 												'bower_components/highcharts/modules/exporting.js',
                         'bower_components/jquery-ui/jquery-ui.min.js',
-                        'bower_components/angular-cookies/angular-cookies.min.js'],
+                        'bower_components/angular-cookies/angular-cookies.min.js',
+                        'bower_components/ng-table/dist/ng-table.min.js'],
  		    	'dist/app/js/app.min.js': ['app/app.js', 'app/flags.js', 'app/globalHighchartOptions.js', 'app/scripts/**/*.js']
 
 				}

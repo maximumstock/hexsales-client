@@ -6,7 +6,7 @@ angular.module('hexsales-client')
       scope: {
         name: '@'
       },
-      template: '<button class="btn btn-default btn-sm follow-button"><span ng-class="{ active: isActive(\'/articles/Set 003 Booster Pack\')}" class="glyphicon glyphicon-heart"></span></button>',
+      template: '<button class="btn btn-default btn-xs follow-button">Favorite <span style="color: rgb(220, 20, 20);" class="glyphicon glyphicon-heart"></span></button>',
       link: function(scope, element, attrs) {
 
         // when the button is clicked, add the name of the article to the list in the cookie
@@ -20,7 +20,6 @@ angular.module('hexsales-client')
           } else {
             favorites.splice(index, 1);
           }
-          console.log(favorites);
           favorites.sort();
           $cookies.putObject('hexsales-article-favorites', favorites);
 

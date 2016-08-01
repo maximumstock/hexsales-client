@@ -1,35 +1,57 @@
 'use strict';
 
 angular.module('hexsales-client')
-  .controller('DailyReportCtrl', ['$scope', 'Api', function($scope, Api) {
+  .controller('DailyReportCtrl', ['$scope', 'NgTableParams', 'Api', function($scope, NgTableParams, Api) {
+
+    $scope.tables = {
+      platinum: {},
+      gold: {}
+    };
 
     function getMostSoldArticles(params) {
 
       Api.getMostSoldArticles(params)
         .then(function(res) {
 
-          $scope.mostSoldArticles = [];
+          $scope.mostSoldArticles = []; // plat, gold
 
           var keys = Object.keys(res.data);
-          keys.forEach(function(i) {
+          keys.forEach(function(currency) {
             $scope.mostSoldArticles.push({
-              currency: i[0].toUpperCase() + i.slice(1, i.length),
-              data: res.data[i].map(function(r) {
+              currency: currency[0].toUpperCase() + currency.slice(1, currency.length),
+              data: res.data[currency].map(function(r) {
                 return {
                   name: r.name,
-                  quantity: numeral(r.quantity || 0).format('0,0'),
-                  total: numeral(r.total || 0).format('0,0'),
-                  avg: numeral(r.avg || 0).format('0,0')
+                  quantity: {
+                    numerical: r.quantity,
+                    string: numeral(r.quantity).format('0,0')
+                  },
+                  total: {
+                    numerical: r.total,
+                    string: numeral(r.total).format('0,0')
+                  },
+                  avg: {
+                    numerical: r.avg,
+                    string: numeral(r.avg).format('0,0')
+                  }
                 };
               })
             });
+
+            $scope.tables[currency].tableParams = new NgTableParams({
+              sorting: {
+                'quantity.numerical': 'desc'
+              }
+            }, {
+              dataset: $scope.mostSoldArticles[currency === 'platinum' ? 0 : 1].data
+            });
+
           });
         })
         .catch(function(err) {
           // @TODO handle error
           console.log(err);
         });
-
     }
 
     getMostSoldArticles({

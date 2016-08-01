@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('hexsales-client', ['ngRoute', 'ngCookies'])
+angular.module('hexsales-client', ['ngRoute', 'ngCookies', 'ngTable'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
