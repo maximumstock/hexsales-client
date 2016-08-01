@@ -61,6 +61,11 @@ angular.module('hexsales-client')
       return $http.get(url);
     }
 
+    this.getPricelist = function() {
+      var url = apiUrl + '/stats/pricelist';
+      return $http.get(url);
+    }
+
     // this.getConversionRate = function(params) {
     //   return $http.get(apiUrl + '/articles/' + params.name + '/conversion');
     // };

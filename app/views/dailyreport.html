@@ -9,7 +9,7 @@
 
 <div class="col-xs-12">
   <h1>Daily Report</h1>
-  <p>Here you can find a list of different metrics for the current day. Don&#39;t worry, there will be more content.</p>
+  <p>Here you can find a list of different metrics for the current day.</p>
   <hr/>
 </div>
 
@@ -29,10 +29,10 @@
     </thead>
     <tobdy>
       <tr ng-repeat="row in set.data">
-        <td><a href="#/articles/{{::row.name}}">{{::row.name}}</a></td>
+        <td><a href="#/articles/{{::row.name}}">{{::row.name}}</a> <fav-list class="pull-right" name={{::row.name}}></fav-list></td>
         <td>{{::row.quantity}}</td>
-        <td>{{::row.total}} {{::set.currency[0]}}</td>
-        <td>{{::row.avg}} {{::set.currency[0]}}</td>
+        <td><span class="{{::set.currency.toLowerCase()}}">{{::row.total}} {{::set.currency[0]}}</span></td>
+        <td><span class="{{::set.currency.toLowerCase()}}">{{::row.avg}} {{::set.currency[0]}}</span></td>
       </tr>
     </tbody>
   </table>

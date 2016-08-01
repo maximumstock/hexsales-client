@@ -1,11 +1,15 @@
 'use strict';
 
-angular.module('hexsales-client', ['ngRoute'])
+angular.module('hexsales-client', ['ngRoute', 'ngCookies'])
   .config(['$routeProvider', function($routeProvider) {
     $routeProvider
       .when('/', {
         controller: 'DailyReportCtrl',
         templateUrl: 'app/views/dailyreport.html'
+      })
+      .when('/favorites', {
+        controller: 'FavoritesCtrl',
+        templateUrl: 'app/views/favorites.html'
       })
       .when('/economy', {
         controller: 'EconomyCtrl',

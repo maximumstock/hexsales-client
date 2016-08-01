@@ -26,7 +26,8 @@ module.exports = function(grunt) {
 												'bower_components/highcharts/highstock.js',
 												'bower_components/highcharts/highcharts-more.js',
 												'bower_components/highcharts/modules/exporting.js',
-                                                'bower_components/jquery-ui/jquery-ui.min.js'],
+                        'bower_components/jquery-ui/jquery-ui.min.js',
+                        'bower_components/angular-cookies/angular-cookies.min.js'],
  		    	'dist/app/js/app.min.js': ['app/app.js', 'app/flags.js', 'app/globalHighchartOptions.js', 'app/scripts/**/*.js']
 
 				}

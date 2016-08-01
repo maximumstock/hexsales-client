@@ -1,5 +1,5 @@
 body {
-	font-size: 13px;
+	font-size: 14px;
 }
 
 /* fix jQuery UI autocomplete search bar font */
@@ -102,4 +102,15 @@ div.navbar-header > a.navbar-brand {
 
 .alert {
 	border-radius: 0px;
+}
+
+/* classes for currency colors */
+.platinum {
+  color: rgb(122, 122, 122);
+  font-weight: bold;
+}
+
+.gold {
+  color: rgb(255, 205, 0);
+  font-weight: bold;
 }

@@ -34,6 +34,8 @@
                     </ul>
                 </li>
                 <li role="separator" class="divider"></li>
+                <li ng-class="{ active: isActive('/favorites')}"><a href="#/favorites">Favorites</a></li>
+                <li role="separator" class="divider"></li>
                 <li><a href="#/about">About</a></li>
             </ul>
             <div class="form-group navbar-form navbar-right" ng-controller="SearchCtrl">
