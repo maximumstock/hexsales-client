@@ -10,7 +10,7 @@ angular.module('hexsales-client')
 
     $scope.update = function() {
 
-      $scope.favorites = $cookies.getObject('hexsales-article-favorites');
+      $scope.favorites = $cookies.getObject('hexsales-article-favorites') || [];
 
       Api.getPricelist()
         .then(function(res) {
