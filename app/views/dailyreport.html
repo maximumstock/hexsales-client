@@ -1,12 +1,3 @@
-<!-- breadcrumb nav -->
-<div class="col-xs-12">
-  <ol class="breadcrumb">
-		<li>hexsales.net</li>
-		<li>Daily Report</li>
-  </ol>
-  <hr/>
-</div>
-
 <div class="col-xs-12">
   <h1>Daily Report</h1>
   <p>Here you can find a list of different metrics for the current day.</p>
@@ -15,6 +6,7 @@
 
 <div class="col-xs-12">
   <h2>Most sold articles in the last 3 days</h2>
+  <p>The following list consists of the 100 most sold articles for the last 3 days. Note that sorting by other fields (eg. average price) sorts on the same 100 articles.</p>
 </div>
 <div class="col-md-6" ng-repeat="currency in ['platinum', 'gold']">
   <h3>{{::currency[0].toUpperCase()}}{{::currency.slice(1, currency.length).toLowerCase()}}</h3>
@@ -24,7 +16,7 @@
 
         <td data-title="'Name'" sortable="'name'"><a href="#/articles/{{::row.name}}">{{::row.name}}</a><fav-list class="pull-right" name={{::row.name}}></fav-list></td>
         <td data-title="'Quantity'" sortable="'quantity.numerical'">{{::row.quantity.string}}</td>
-        <td data-title="'Total'" sortable="'total.numerical'">{{::row.total.string}} {{::currency[0].toUperCase()}}</td>
+        <td data-title="'Total'" sortable="'total.numerical'">{{::row.total.string}} {{::currency[0].toUpperCase()}}</td>
         <td data-title="'Average'" sortable="'avg.numerical'">{{::row.avg.string}} {{::currency[0].toUpperCase()}}</td>
 
       </tr>

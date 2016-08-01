@@ -9,11 +9,9 @@ module.exports = function(grunt) {
 			},
 			target: {
 				files: {
-					'dist/app/css/output.css': ['bower_components/jquery-ui/themes/smoothness/jquery-ui.min.css',
-                                      'bower_components/bootstrap/dist/css/bootstrap.min.css',
+					'dist/app/css/output.css': ['bower_components/ng-table/dist/ng-table.min.css',
                                       'app/styles/main.css',
-                                      'app/styles/cardimg.css',
-                                      'bower_components/ng-table/dist/ng-table.min.css']
+                                      'app/styles/cardimg.css']
 				}
 			}
 		},
@@ -43,7 +41,7 @@ module.exports = function(grunt) {
 					{expand: true, cwd: 'app/views', src: '*', dest: 'dist/app/views'},
 					{expand: true, cwd: 'app/images', src: '*', dest: 'dist/app/images'},
 					{expand: true, cwd: 'bower_components/bootstrap/dist', src: '**', dest: 'dist/app/css/bootstrap'},
-                    {expand: true, cwd: 'bower_components/jquery-ui', src: '**', dest: 'dist/app/css/jquery-ui'}
+          {expand: true, cwd: 'bower_components/jquery-ui', src: '**', dest: 'dist/app/css/jquery-ui'}
 				]
 			}
 		}
