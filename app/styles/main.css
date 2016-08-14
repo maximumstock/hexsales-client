@@ -112,3 +112,8 @@ div.navbar-header > a.navbar-brand {
 .gold {
   color: #efad00;
 }
+
+/* fixes search button height in search bar */
+#search-bar-button {
+    height: 34px;
+}

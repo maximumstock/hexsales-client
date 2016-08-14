@@ -8,13 +8,15 @@
   <h2>Most sold articles in the last 3 days</h2>
   <p>The following list consists of the 100 most sold articles for the last 3 days. Note that sorting by other fields (eg. average price) sorts on the same 100 articles.</p>
 </div>
-<div class="col-md-6" ng-repeat="currency in ['platinum', 'gold']">
+<div class="col-xs-12" ng-repeat="currency in ['platinum', 'gold']">
   <h3>{{::currency[0].toUpperCase()}}{{::currency.slice(1, currency.length).toLowerCase()}}</h3>
-  <table ng-table="tables[currency].tableParams" class="table table-striped table-condensed table-bordered">
+  <table ng-table="tables[currency].tableParams" show-filter="true" class="table table-striped table-condensed table-bordered">
     <tobdy>
       <tr ng-repeat="row in $data">
 
         <td data-title="'Name'" sortable="'name'"><a href="#/articles/{{::row.name}}">{{::row.name}}</a><fav-list class="pull-right" name={{::row.name}}></fav-list></td>
+        <td data-title="'Rarity'" sortable="'rarity'">{{::row.rarity}}</td>
+        <td data-title="'Set'" sortable="'set'">{{::row.set}}</td>
         <td data-title="'Quantity'" sortable="'quantity.numerical'">{{::row.quantity.string}}</td>
         <td data-title="'Total'" sortable="'total.numerical'">{{::row.total.string}} {{::currency[0].toUpperCase()}}</td>
         <td data-title="'Average'" sortable="'avg.numerical'">{{::row.avg.string}} {{::currency[0].toUpperCase()}}</td>

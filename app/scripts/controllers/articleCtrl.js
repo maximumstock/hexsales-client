@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('hexsales-client').controller('SingleArticleCtrl', ['$scope', '$location', '$routeParams', 'Api', function($scope, $location, $routeParams, Api) {
+angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$location', '$routeParams', 'Api', function($scope, $location, $routeParams, Api) {
 
     $scope.articleName = $routeParams.name;
     $scope.articleNameSanitized = $scope.articleName;
@@ -141,6 +141,7 @@ angular.module('hexsales-client').controller('SingleArticleCtrl', ['$scope', '$l
                     yAxis: [{ // Primary yAxis
                         labels: {
                             x: -2,
+                            y: -2,
                             align: "right"
                         },
                         title: {},
@@ -150,6 +151,7 @@ angular.module('hexsales-client').controller('SingleArticleCtrl', ['$scope', '$l
                     }, { // Secondary yAxis
                         labels: {
                             align: 'left',
+                            y: -2,
                             x: 2
                         },
                         title: {},
