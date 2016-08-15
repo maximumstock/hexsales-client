@@ -20,7 +20,6 @@ angular.module('hexsales-client')
                         $scope.mostSoldArticles.push({
                             currency: currency[0].toUpperCase() + currency.slice(1, currency.length),
                             data: res.data[currency].map(function(r) {
-                                console.log(r.set);
                                 return {
                                     name: r.name,
                                     set: Api.findRealSetName(r.set),
