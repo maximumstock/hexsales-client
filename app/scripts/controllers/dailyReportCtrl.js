@@ -33,8 +33,8 @@ angular.module('hexsales-client')
                                         string: numeral(r.total).format('0,0')
                                     },
                                     avg: {
-                                        numerical: r.avg,
-                                        string: numeral(r.avg).format('0,0')
+                                        numerical: r.average,
+                                        string: numeral(r.average).format('0,0')
                                     }
                                 };
                             })
