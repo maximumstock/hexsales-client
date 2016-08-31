@@ -5,6 +5,10 @@ angular.module('hexsales-client')
 
         var apiUrl = 'http://localhost:3000/v1';
 
+        this.getAllArticles() = function() {
+            return $http.get(apiUrl + '/articles');
+        };
+
         this.searchArticles = function(params) {
             params.contains = true;
             return $http.post(apiUrl + '/articles/search', params);
