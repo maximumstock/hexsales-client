@@ -2,14 +2,14 @@
 <div class="col-xs-12">
     <div ng-if="articleBasics.type === 'Card'">
         <div>
-            <h1>{{::articleName}} <fav-list name="{{::articleName}}"></fav-list></h1>
+            <h1>{{::articleBasics.name}} <fav-list name="{{::articleBasics.name}}" uuid="{{articleBasics.uuid}}"></fav-list></h1>
             <p><strong>Rarity:</strong> {{::articleBasics.rarity || '-'}}</p>
             <p><strong>Type:</strong> {{::articleBasics.type || '-'}}</p>
         </div>
-        <div card-img name="{{articleName}}"></div>
+        <div card-img name="{{::articleBasics.name}}"></div>
     </div>
     <div ng-if="articleBasics.type !== 'Card'">
-        <h1>{{::articleName}} <fav-list name="{{::articleName}}"></fav-list></h1>
+        <h1>{{::articleBasics.name}} <fav-list name="{{::articleBasics.name}}" uuid="{{articleBasics.uuid}}"></fav-list></h1>
         <p ng-show="articleBasics.rarity"><strong>Rarity:</strong> {{articleBasics.rarity || '-'}}</p>
         <p ng-show="articleBasics.set"><strong>Set:</strong> {{articleBasics.set || '-'}}</p>
         <p ng-show="articleBasics.type"><strong>Type:</strong> {{articleBasics.type || '-'}}</p>

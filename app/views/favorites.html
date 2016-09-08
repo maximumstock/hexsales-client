@@ -20,7 +20,8 @@
                             <th style="font-weight: normal;">
                                 <div>
                                     <h5>
-                                        <a href="#/articles/{{::article.name}}">{{::article.name}}</a> <fav-list name="{{::article.name}}"></fav-list>
+                                        <a href="#/articles/{{::article.uuid}}">{{::article.name}}</a> <fav-list
+                                            name="{{::article.name}}" uuid="{{::article.uuid}}"></fav-list>
                                     </h5>
 
                                     <div style="float:left; margin-right: 25px;" ng-repeat="pricesByCurrency in article.prices">

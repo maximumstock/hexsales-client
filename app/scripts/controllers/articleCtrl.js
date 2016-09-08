@@ -2,8 +2,17 @@
 
 angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$location', '$routeParams', 'Api', function($scope, $location, $routeParams, Api) {
 
-    $scope.articleName = $routeParams.name;
-    $scope.articleNameSanitized = $scope.articleName;
+    $scope.articleUUID = $routeParams.uuid;
+
+    // in case someone uses the uuid parameter like before and enters an actual name and not a uuid,
+    // we should catch that and redirect to the search page
+    var isUUID = $routeParams.uuid.match(/([a-z0-9])+(-[a-z0-9]*){4}/) ? true : false;
+    if(!isUUID) {
+        $location.path('/search/' + $routeParams.uuid);
+    }
+
+
+
     // pre-init
     $scope.summaryData = {};
     $scope.historyData = {};
@@ -12,39 +21,18 @@ angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$locatio
         gold: {}
     };
 
-    var specialCharacters = [' ', ',', '\'', '-'];
-    specialCharacters.forEach(function(sc) {
-        $scope.articleNameSanitized = $scope.articleNameSanitized.split(sc).join('');
-    });
-
     // try to find the specified article
     // if the specified article does not seem to exist, redirect to main page
     // if the specified article does exist, load further data and render the page
-    Api.getArticleBasics({
-            name: $scope.articleName
-        })
+    Api.getArticleBasics($scope.articleUUID)
         .then(function(res) {
-            getArticleBasics();
+            $scope.articleBasics = res.data;
+            getSummaries();
             getHistories();
         })
         .catch(function(err) {
             $location.path('/');
         });
-
-
-    // helper function to load basic article information based on it's name
-    function getArticleBasics() {
-        Api.getArticleBasics({
-                name: $scope.articleName
-            })
-            .then(function(res) {
-                $scope.articleBasics = res.data;
-                getSummaries();
-            })
-            .catch(function(err) {
-                throw err;
-            });
-    }
 
 
     // helper function to load summary data
@@ -62,7 +50,7 @@ angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$locatio
             var params = {
                 start: moment().subtract(timeframe, 'days').format('YYYY-MM-DD'),
                 end: moment().format('YYYY-MM-DD'),
-                name: $scope.articleName
+                uuid: $scope.articleUUID
             };
 
             if (timeframe === 'Lifetime') {
@@ -91,7 +79,7 @@ angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$locatio
     function getHistories() {
 
         var params = {
-            name: $scope.articleName,
+            uuid: $scope.articleUUID,
             start: '2014-12-23',
             end: moment().format('YYYY-MM-DD')
         };
@@ -187,7 +175,7 @@ angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$locatio
                     config.yAxis[1].title.text = "Quantity";
 
                     // customize chart title
-                    config.title.text = 'History for <b>' + $scope.articleName + '</b> - ' + cur[0].toUpperCase() + cur.slice(1, cur.length);
+                    config.title.text = 'History for <b>' + $scope.articleBasics.name + '</b> - ' + cur[0].toUpperCase() + cur.slice(1, cur.length);
 
                     // customize selected zoom stage of x-axis
                     // depending on the date string of the most recent string, it is needed to zoom out of the 3 month window,
@@ -300,24 +288,6 @@ angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$locatio
             });
 
     }
-
-
-
-
-    // // helper function to load conversion rate data
-    // function getConversionRate() {
-    //
-    //   Api.getConversionRate({name: $scope.articleName})
-    //     .then(function(res) {
-    //       console.log(res.data);
-    //     })
-    //     .catch(function(err) {
-    //       throw err;
-    //     });
-    //
-    // }
-
-
 
 
 }]);

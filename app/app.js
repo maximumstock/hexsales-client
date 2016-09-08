@@ -19,7 +19,7 @@ angular.module('hexsales-client', ['ngRoute', 'ngCookies', 'ngTable'])
                 controller: 'EconomyCtrl',
                 templateUrl: 'app/views/economy.html'
             })
-            .when('/articles/:name*', {
+            .when('/articles/:uuid*', {
                 controller: 'ArticleCtrl',
                 templateUrl: 'app/views/article.html'
             })

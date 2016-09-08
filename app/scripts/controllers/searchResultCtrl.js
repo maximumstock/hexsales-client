@@ -20,7 +20,7 @@ angular.module('hexsales-client').controller('SearchResultCtrl', ['$scope', '$ro
 
 		// if there is only one result, redirect immediately;
 		if($scope.searchResults.length === 1) {
-			$location.path('/articles/' + $scope.searchResults[0].name);
+			$location.path('/articles/' + $scope.searchResults[0].uuid);
 		}
 
         // filter out all cards

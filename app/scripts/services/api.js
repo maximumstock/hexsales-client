@@ -14,12 +14,12 @@ angular.module('hexsales-client')
             return $http.post(apiUrl + '/articles/search', params);
         };
 
-        this.getArticleBasics = function(params) {
-            return $http.get(apiUrl + '/articles/' + encodeURIComponent(params.name));
+        this.getArticleBasics = function(uuid) {
+            return $http.get(apiUrl + '/articles/' + encodeURIComponent(uuid));
         };
 
         this.getArticleSummary = function(params) {
-            var url = apiUrl + '/articles/' + encodeURIComponent(params.name) + '/summaries?q=1';
+            var url = apiUrl + '/articles/' + encodeURIComponent(params.uuid) + '/summaries?q=1';
             if (params.start) {
                 url = url + '&start=' + params.start;
             }
@@ -50,7 +50,7 @@ angular.module('hexsales-client')
         };
 
         this.getArticleHistory = function(params) {
-            var url = apiUrl + '/articles/' + encodeURIComponent(params.name) + '/histories?q=1';
+            var url = apiUrl + '/articles/' + encodeURIComponent(params.uuid) + '/histories?q=1';
             if (params.start) {
                 url = url + '&start=' + params.start;
             }

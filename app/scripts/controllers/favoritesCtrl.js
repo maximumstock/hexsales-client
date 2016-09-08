@@ -11,6 +11,11 @@ angular.module('hexsales-client')
     $scope.update = function() {
 
       $scope.favorites = $cookies.getObject('hexsales-article-favorites') || [];
+        $scope.favorites = $scope.favorites.sort(function(a, b) {
+            if(a.name < b.name) return -1;
+            if(a.name > b.name) return 1;
+            return 0;
+        });
 
       Api.getPricelist()
         .then(function(res) {
@@ -18,17 +23,18 @@ angular.module('hexsales-client')
           $scope.favoritesPrices = $scope.favorites.map(function(article) {
 
             var data = {
-              name: article,
-              prices: [[], []] // plat, gold
+                name: article.name,
+                uuid: article.uuid,
+                prices: [[], []] // plat, gold
             };
 
             ['platinum', 'gold'].forEach(function(currency) {
 
-              if(!$scope.pricelist[currency][article]) {
+              if(!$scope.pricelist[currency][article.uuid]) {
                 return;
               }
 
-              var obj = $scope.pricelist[currency][article];
+              var obj = $scope.pricelist[currency][article.uuid];
               var keys = Object.keys(obj);
               keys.forEach(function(k) {
 

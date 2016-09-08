@@ -13,11 +13,6 @@ angular.module('hexsales-client').controller('SetCtrl', ['$scope', '$location', 
         gold: {}
     };
 
-    var specialCharacters = [' ', ',', '\'', '-'];
-    specialCharacters.forEach(function(sc) {
-        $scope.setNameSanitized = $scope.setName.split(sc).join('');
-    });
-
     getArticles();
 
     // helper function to find all articles for the current set

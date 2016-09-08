@@ -14,7 +14,9 @@
     <tobdy>
       <tr ng-repeat="row in $data">
 
-        <td data-title="'Name'" filter="{ name: 'text' }" sortable="'name'"><a href="#/articles/{{::row.name}}">{{::row.name}}</a><fav-list class="pull-right" name={{::row.name}}></fav-list></td>
+        <td data-title="'Name'" filter="{ name: 'text' }" sortable="'name'"><a
+                href="#/articles/{{::row.uuid}}">{{::row.name}}</a><fav-list class="pull-right" name={{::row.name}}
+                uuid={{::row.uuid}}></fav-list></td>
         <td data-title="'Rarity'" filter="{ rarity: 'text' }" sortable="'rarity'">{{::row.rarity}}</td>
         <td data-title="'Set'" filter="{ set: 'text' }" sortable="'set'">{{::row.set}}</td>
         <td data-title="'Quantity'" sortable="'quantity.numerical'">{{::row.quantity.string}}</td>

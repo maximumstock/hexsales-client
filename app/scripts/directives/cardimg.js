@@ -26,18 +26,18 @@ angular.module('hexsales-client')
                         // need to load card portrait for first time
                         // load picture from gameforge
                         var imgUrl = 'https://cards.hex.gameforge.com/cardsdb_350x490/en/' + encodeURIComponent(scope.name) + '.png';
-                        var $img = $('<img src="' + imgUrl + '" />')
-                            .error(function() {
+                        console.log(imgUrl);
+                        var img = $('<img src="' + imgUrl + '" />').on('load', function() {
+                                $('.card-portrait').append(img).show();
+                                portraitVisible = true;
+                                portraitLoaded = true;
+                                errorOccured = false;
+                            }).on('error', function() {
                                 $('.card-portrait').parent().append('<p>Sorry, there was a problem loading the portrait.</p>').show();
                                 portraitLoaded = true;
                                 errorOccured = true;
                             })
-                            .load(function() {
-                                $('.card-portrait').append($img).show();
-                                portraitVisible = true;
-                                portraitLoaded = true;
-                                errorOccured = false;
-                            });
+
                     } else {
                         if (portraitVisible === false && errorOccured === false) {
                              $('.card-portrait').show();

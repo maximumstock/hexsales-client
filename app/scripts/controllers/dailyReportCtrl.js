@@ -21,6 +21,7 @@ angular.module('hexsales-client')
                             currency: currency[0].toUpperCase() + currency.slice(1, currency.length),
                             data: res.data[currency].map(function(r) {
                                 return {
+                                    uuid: r.uuid,
                                     name: r.name,
                                     set: Api.findRealSetName(r.set),
                                     rarity: r.rarity,
