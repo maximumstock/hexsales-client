@@ -40,7 +40,16 @@ function getFlagSeries() {
             x: Date.parse('2016-08-12'),
             text: '<a target="_blank" href="https://www.hextcg.com/primordial-knowledge-making-banks/">Deck Article - Making Banks</a>',
             title: 'Deck Article'
+        }, {
+            x: Date.parse('2016-09-02'),
+            text: '<a target="_blank" href="https://www.hextcg.com/season-2-is-here/">Ladder - Season 2</a>',
+            title: 'Season 2'
+        }, {
+            x: Date.parse('2016-09-07'),
+            text: '<a target="_blank" href="https://www.hextcg.com/herofall-is-now-live/">Herofall Launch</a>',
+            title: 'Set 5'
         }
+
     ];
 
     var chartFlagSeries = {
