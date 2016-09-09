@@ -8,7 +8,7 @@ angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$locatio
     // we should catch that and redirect to the search page
     var isUUID = $routeParams.uuid.match(/([a-z0-9])+(-[a-z0-9]*){4}/) ? true : false;
     if(!isUUID) {
-        $location.path('/search/' + $routeParams.uuid);
+        return $location.path('/search/' + $routeParams.uuid);
     }
 
 
