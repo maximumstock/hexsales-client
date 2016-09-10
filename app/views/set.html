@@ -32,6 +32,39 @@
     </table>
 </div>
 
+
+<!-- summary by rarity data -->
+<div class="col-xs-12">
+    <hr/>
+    <h4>Summaries by Rarity</h4>
+    <p>Here is a list of summaries per timespan per rarity for <b>{{::realSetName}}</b>.</p>
+    <table class="table table-striped table-condensed table-bordered">
+        <thead>
+            <th>Timespan</th>
+            <th>Rarity</th>
+            <th>Average Price</th>
+            <th>Total Spent</th>
+            <th>Quantity Sold</th>
+        </thead>
+        <tbody>
+            <tr ng-repeat="e in summaryByRarityData">
+                <td>Last <b>{{::e.timeframe}}</b> {{ e.timeframe === 1 ? 'day' : 'days' }}</td>
+                <td>{{::e.rarity}}</td>
+                <td>
+                    <span class="platinum">{{::e.data.platinum.average || 0}} P</span> /
+                    <span class="gold">{{::e.data.gold.average || 0}} G</span>
+                </td>
+                <td>
+                    <span class="platinum">{{::e.data.platinum.total || 0}} P</span> / 
+                    <span class="gold">{{::e.data.gold.total || 0}} G</span>
+                </td>
+                <td>{{::e.data.platinum.quantity || 0}} / {{::e.data.gold.quantity || 0}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
 <!-- Article list -->
 <div class="col-xs-12">
     <h2>Article list ({{articles.length}})</h2>

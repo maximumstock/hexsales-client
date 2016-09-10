@@ -6,6 +6,7 @@ angular.module('hexsales-client').controller('SetCtrl', ['$scope', '$location', 
     $scope.realSetName = Api.findRealSetName($scope.setName);
     // pre-init
     $scope.articles = [];
+    $scope.summaryByRarityData = [];
     $scope.summaryData = {};
     $scope.historyData = {};
     $scope.chartConfigs = {
@@ -29,6 +30,7 @@ angular.module('hexsales-client').controller('SetCtrl', ['$scope', '$location', 
                     return $location.path('/about');
                 }
                 getSummaries();
+                getSummariesByRarity();
                 $scope.articlesTable = new NgTableParams({
                   sorting: {
                     'name': 'asc'
@@ -41,6 +43,46 @@ angular.module('hexsales-client').controller('SetCtrl', ['$scope', '$location', 
                 console.log(error);
                 // @TODO error handling
             })
+    }
+
+    // helper function to load summary data by rarity
+    function getSummariesByRarity() {
+
+        var timeframes = [1, 3, 5, 7];
+        timeframes.forEach(function(timeframe) {
+
+            gameRarities.forEach(function(rarity) {
+           
+                var params = {
+                    start: moment().subtract(timeframe, 'days').format('YYYY-MM-DD'),
+                    end: moment().format('YYYY-MM-DD'),
+                    set: $scope.setName,
+                    rarity: rarity
+                };
+          
+                Api.getSummary(params)
+                    .then(function(res) {
+                        $scope.summaryByRarityData.push({
+                            rarity: rarity,
+                            rarityNumeric: Api.mapRarityToInt(rarity), 
+                            timeframe: timeframe,
+                            data: Api.formatAllDemNumbers(res.data)
+                        });
+                        $scope.summaryByRarityData.sort(function(a, b) {
+                            if(a.rarityNumeric < b.rarityNumeric) return -1;
+                            if(a.rarityNumeric > b.rarityNumeric) return 1;
+                            return 0;
+                        });
+                    })
+                    .catch(function(err) {
+                        console.log(err);
+                    });
+
+
+            }); 
+
+        });
+
     }
 
     // helper function to load summary data

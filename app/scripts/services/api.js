@@ -107,6 +107,42 @@ angular.module('hexsales-client')
             }
         }
 
+        this.mapRarityToInt = function(string) {
+            switch(string.toLowerCase()) {
+                case 'common': return 0;
+                case 'uncommon': return 1;
+                case 'rare': return 2;
+                case 'legendary': return 3;
+                case 'epic': return 4;
+                case 'promo': return 4;
+                default: return string; 
+            }
+        }
+
+        this.formatAllDemNumbers = function(o) {
+
+            var self = this;
+
+            if(!o) return o;
+            if(typeof o === 'object' && Array.isArray(o) === false) {
+                var keys = Object.keys(o);
+                keys.forEach(function(k) {
+                    o[k] = self.formatAllDemNumbers(o[k]);
+                });
+                return o;
+            }
+            if(Array.isArray(o)) {
+                for(var i = 0; i < o.length; i++) {
+                    o[i] = self.formatAllDemNumbers(o[i]);
+                }
+                return o;
+            }
+            if(typeof o === 'number') {
+                return numeral(o).format('0,0');
+            }
+
+        }
+
         // this.getConversionRate = function(params) {
         //   return $http.get(apiUrl + '/articles/' + params.name + '/conversion');
         // };
