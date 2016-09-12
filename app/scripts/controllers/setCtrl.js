@@ -30,7 +30,7 @@ angular.module('hexsales-client').controller('SetCtrl', ['$scope', '$location', 
                     return $location.path('/about');
                 }
                 getSummaries();
-                getSummariesByRarity();
+                // getSummariesByRarity();
                 $scope.articlesTable = new NgTableParams({
                   sorting: {
                     'name': 'asc'
