@@ -6,7 +6,8 @@
 
 <div class="col-xs-12">
   <h2>Most sold articles in the last 3 days</h2>
-  <p>The following list consists of the 100 most sold articles for the last 3 days. Note that sorting by other fields (eg. average price) sorts on the same 100 articles.</p>
+  <p>The following list consists of the 100 most sold articles for the last 3 days. Note that sorting by other fields
+      (eg. mean price) sorts on the same 100 articles.</p>
 </div>
 <div class="col-xs-12" ng-repeat="currency in ['platinum', 'gold']">
   <h3>{{::currency[0].toUpperCase()}}{{::currency.slice(1, currency.length).toLowerCase()}}</h3>
@@ -21,7 +22,7 @@
         <td data-title="'Set'" filter="{ set: 'text' }" sortable="'set'">{{::row.set}}</td>
         <td data-title="'Quantity'" sortable="'quantity.numerical'">{{::row.quantity.string}}</td>
         <td data-title="'Total'" sortable="'total.numerical'">{{::row.total.string}} {{::currency[0].toUpperCase()}}</td>
-        <td data-title="'Average'" sortable="'avg.numerical'">{{::row.avg.string}} {{::currency[0].toUpperCase()}}</td>
+        <td data-title="'Mean'" sortable="'avg.numerical'">{{::row.avg.string}} {{::currency[0].toUpperCase()}}</td>
 
       </tr>
     </tbody>

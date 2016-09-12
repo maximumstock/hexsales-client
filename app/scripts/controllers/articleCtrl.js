@@ -222,7 +222,7 @@ angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$locatio
                     };
 
                     var avgSeries = {
-                        name: "Average",
+                        name: "Mean",
                         type: "line",
                         data: avg,
                         marker: {

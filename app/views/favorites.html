@@ -26,7 +26,7 @@
 
                                     <div style="float:left; margin-right: 25px;" ng-repeat="pricesByCurrency in article.prices">
                                         <span ng-repeat="e in pricesByCurrency">
-                                            Avg <span class={{::e.currency.toLowerCase()}}>
+                                            Mean <span class={{::e.currency.toLowerCase()}}>
                                             <b>{{::e.price}} {{e.currency[0].toUpperCase()}}</b>
                                             </span> (Min <b>{{::e.min}} {{e.currency[0].toUpperCase()}}</b> - Max <b>{{::e.max}} {{e.currency[0].toUpperCase()}}</b>),
                                             <b>{{::e.quantity}}</b> sold ({{::e.description}})<br/>
