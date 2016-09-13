@@ -41,7 +41,7 @@ angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$locatio
         // assign helper method to scope so it can be used in templates
         $scope.isNumber = angular.isNumber;
 
-        var timeframes = [3, 7, 14, 21, 30, 60]; // find summaries for last {x} days
+        var timeframes = [1, 2, 3, 7, 8, 9, 14, 15, 16]; // find summaries for last {x} days
         if ($scope.articleBasics.type !== 'Pack') {
             timeframes.push('Lifetime');
         }
