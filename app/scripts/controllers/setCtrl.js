@@ -91,7 +91,7 @@ angular.module('hexsales-client').controller('SetCtrl', ['$scope', '$location', 
         // assign helper method to scope so it can be used in templates
         $scope.isNumber = angular.isNumber;
 
-        var timeframes = [3, 7, 14, 21, 30, 60]; // find summaries for last {x} days
+        var timeframes = [1, 2, 3, 6, 7, 8, 13, 14, 15]; // find summaries for last {x} days
         timeframes.forEach(function(timeframe) {
 
             var params = {
