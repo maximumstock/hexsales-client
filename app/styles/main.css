@@ -117,3 +117,14 @@ div.navbar-header > a.navbar-brand {
 #search-bar-button {
     height: 34px;
 }
+
+/* favorite button classes */
+.favorite-button {}
+
+.favorite-button > span {
+    color: rgb(200, 200, 200); /* default heart color */
+}
+
+.favorite-button-favorited > span {
+    color: rgb(220, 20, 20);
+}
