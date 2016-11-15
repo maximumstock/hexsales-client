@@ -14,6 +14,13 @@ angular.module('hexsales-client')
             return $http.post(apiUrl + '/articles/search', params);
         };
 
+        this.searchForSpecificArticle = function(articleName) {
+            return $http.post(apiUrl + '/aticles/search', {
+                name: articleName,
+                contains: false
+            });
+        }
+
         this.getArticleBasics = function(uuid) {
             return $http.get(apiUrl + '/articles/' + encodeURIComponent(uuid));
         };

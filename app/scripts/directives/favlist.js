@@ -17,11 +17,8 @@ angular.module('hexsales-client')
         var duplicates = favorites.filter(function(e) {
           return e.uuid === scope.uuid;
         });
-        console.log(duplicates.length);
         if(duplicates.length !== 0) {
-            console.log($(element).children());
             element.children().addClass('favorite-button-favorited');
-            console.log("lol");
         }
 
         // when the button is clicked, add the name of the article to the list in the cookie
