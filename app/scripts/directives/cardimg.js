@@ -18,9 +18,6 @@ angular.module('hexsales-client')
                 var portraitVisible = false;
                 var errorOccured = false;
 
-                // prep name string
-                scope.name = scope.name.split(':').join('');
-
                 $('#toggleCardPortraitButton').click(toggleCardPortrait);
 
                 function toggleCardPortrait() {
@@ -28,6 +25,8 @@ angular.module('hexsales-client')
                     if (portraitLoaded === false) {
                         // need to load card portrait for first time
                         // load picture from gameforge
+                        // prep name string
+                        scope.name = scope.name.split(':').join('');
                         var imgUrl = 'https://cards.hex.gameforge.com/cardsdb_350x490/en/' + encodeURIComponent(scope.name) + '.png';
                         console.log(imgUrl);
                         var img = $('<img src="' + imgUrl + '" />').on('load', function() {
