@@ -7,7 +7,7 @@ angular.module('hexsales-client')
                 name: '@'
             },
             template: '<div> \
-    					<button class="btn btn-default" id="toggleCardPortraitButton">Toggle Card Portrait</button> \
+    			<button class="btn btn-default" id="toggleCardPortraitButton">Toggle Card Portrait</button> \
                         <div class="card-portrait"> \
                         </div> \
                     </div>',
@@ -17,6 +17,9 @@ angular.module('hexsales-client')
                 var portraitLoaded = false;
                 var portraitVisible = false;
                 var errorOccured = false;
+
+                // prep name string
+                scope.name = scope.name.split(':').join('');
 
                 $('#toggleCardPortraitButton').click(toggleCardPortrait);
 
