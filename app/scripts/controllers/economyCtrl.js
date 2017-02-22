@@ -12,11 +12,10 @@ angular.module('hexsales-client').controller('EconomyCtrl', ['$scope', 'Api', fu
 
     // helper function that loads and builds a history chart
     function getEconomyHistory(params) {
-        Api.getEconomyHistory(params)
+        Api.getHistory(params)
             .then(function(res) {
-                $scope.economyData = res.data;
-                buildRegularHistoryChart($scope.economyData);
-                //buildAreaHistoryChart($scope.economyData);
+                buildRegularHistoryChart(res.data);
+                //buildAreaHistoryChart(res.data);
 
             })
             .catch(function(err) {

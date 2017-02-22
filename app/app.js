@@ -27,6 +27,10 @@ angular.module('hexsales-client', ['ngRoute', 'ngCookies', 'ngTable'])
                 controller: 'SearchResultCtrl',
                 templateUrl: 'app/views/search.html'
             })
+            .when('/explorer', {
+                controller: 'ExplorerCtrl',
+                templateUrl: 'app/views/explorer.html'
+            })
             .when('/about', {
                 templateUrl: 'app/views/about.html'
             })

@@ -182,7 +182,8 @@ angular.module('hexsales-client').controller('ArticleCtrl', ['$scope', '$locatio
                     // which is the default in `chartConfig`. we have to do that to make sure that the most recent date is
                     // displayed in the graph
                     if ($scope.historyData.raw[cur].length > 0) {
-                        var monthDiff = moment().diff(moment($scope.historyData.raw[cur][$scope.historyData.raw[cur].length - 1].d), 'months');
+
+                        var monthDiff = moment().diff(moment($scope.historyData.raw[cur][0].d), 'months');
                         if (monthDiff >= 12) {
                             // just give up, set the chart time window to display all sales
                             config.rangeSelector.selected = 5;

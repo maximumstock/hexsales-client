@@ -16,7 +16,11 @@
             <ul class="nav navbar-nav">
                 <li style="font-size: 20px;"><a style="padding-left: 0px;" href="#/about"><strong>hex</strong><span style="font-weight: light;">sales</span></a></li>
                 <li ng-class="{ active: isActive('/')}"><a href="#/">Daily Report</a></li>
+                <li class="dropdown">
                 <li ng-class="{ active: isActive('/economy')}"><a href="#/economy">Economy</a></li>
+                <li role="separator" class="divider"></li>
+                <li ng-class="{ active: isActive('/explorer')}"><a href="#/explorer">Explorer</a></li>
+                <li role="separator" class="divider"></li>
                 <li class="dropdown">
                     <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Packs <span class="caret"></span></a>
                     <ul class="dropdown-menu">

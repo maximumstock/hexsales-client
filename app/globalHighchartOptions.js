@@ -8,6 +8,13 @@ var gameRarities = [
     'Epic'
 ];
 
+var articleTypes = [
+  'Card',
+  'Equipment',
+  'Pack',
+  'Other'
+];
+
 Highcharts.setOptions({
 
     lang: {

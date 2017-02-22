@@ -1,0 +1,28 @@
+<div class="col-xs-12">
+	<h1>Explorer</h1>
+	<p>A filterable chart to check price development for different combinations of <b>sets</b>, <b>rarities</b> and <b>article types</b>.</p>
+	<hr/>
+</div>
+
+
+<div class="col-xs-12">
+
+	<div>
+		<form class="form-inline" ng-submit="getData(params)">
+			<div class="form-group">
+				<input class="form-control" type="text" ng-model="params.start" name="start" />
+				<input class="form-control" type="text" ng-model="params.end" name="end" />
+				<select class="form-control" ng-model="params.set" ng-options="x.value as x.name for x in sets"></select>
+				<select class="form-control" ng-model="params.rarity" ng-options="x.value as x.name for x in rarities"></select>
+				<select class="form-control" ng-model="params.type" ng-options="x.value as x.name for x in types"></select>
+				<button class="btn btn-primary" type="submit">Refresh</button>
+			</div>
+		</form>
+	</div>
+
+	<hr/>
+
+
+	<div class="chart" id="explorer-history-platinum"></div>
+	<div class="chart" id="explorer-history-gold"></div>
+</div>

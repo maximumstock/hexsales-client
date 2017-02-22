@@ -28,7 +28,6 @@ angular.module('hexsales-client')
                         // prep name string
                         scope.name = scope.name.split(':').join('');
                         var imgUrl = 'https://cards.hex.gameforge.com/cardsdb_350x490/en/' + encodeURIComponent(scope.name) + '.png';
-                        console.log(imgUrl);
                         var img = $('<img src="' + imgUrl + '" />').on('load', function() {
                                 $('.card-portrait').append(img).show();
                                 portraitVisible = true;
