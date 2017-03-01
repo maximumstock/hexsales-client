@@ -120,6 +120,7 @@ angular.module('hexsales-client')
                 case 'Set03 PvE Promo': return 'Set 03 Chests';
                 case 'Set04 PvE Promo': return 'Set 04 Chests';
                 case 'Set05 PvE Promo': return 'Set 05 Chests';
+                case 'Set06 PvE Promo': return 'Set 06 Chests';
                 default: return key;
             }
         }
