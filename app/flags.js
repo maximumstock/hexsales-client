@@ -48,7 +48,24 @@ function getFlagSeries() {
 			x: Date.parse('2016-09-07'),
 			text: '<a target="_blank" href="https://www.hextcg.com/herofall-is-now-live/">Herofall Launch</a>',
 			title: 'Set 5'
+		}, {
+			x: Date.parse('2017-02-21'),
+			text: '<a target="_blank" href="https://www.hextcg.com/de/hex-press-release-2017/">Publisher Change</a>',
+			title: 'HXE Press Release'
+		}, {
+			x: Date.parse('2017-02-21'),
+			text: '<a target="_blank" href="https://www.hextcg.com/de/cory-jones-open-letter/">Cory Jones Open Letter</a>',
+			title: 'Cory Jones Open Letter'
+		}, {
+			x: Date.parse('2017-02-28'),
+			text: '<a target="_blank" href="https://www.hextcg.com/de/scars-of-war-patch-notes/">Scars of War Launch</a>',
+			title: 'Set 6'
+		}, {
+			x: Date.parse('2017-02-28'),
+			text: '<a target="_blank" href="https://www.hextcg.com/de/2017-ladder-season-2/">2017 Ladder Season 2</a>',
+			title: '2017 Ladder Season 2'
 		}
+
 
 	];
 
