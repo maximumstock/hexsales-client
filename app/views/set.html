@@ -34,7 +34,7 @@
 
 
 <!-- summary by rarity data -->
-<!--
+
 <div class="col-xs-12">
     <hr/>
     <h4>Summaries by Rarity</h4>
@@ -56,7 +56,7 @@
                     <span class="gold">{{::e.data.gold.average || 0}} G</span>
                 </td>
                 <td>
-                    <span class="platinum">{{::e.data.platinum.total || 0}} P</span> / 
+                    <span class="platinum">{{::e.data.platinum.total || 0}} P</span> /
                     <span class="gold">{{::e.data.gold.total || 0}} G</span>
                 </td>
                 <td>{{::e.data.platinum.quantity || 0}} / {{::e.data.gold.quantity || 0}}</td>
@@ -64,7 +64,7 @@
         </tbody>
     </table>
 </div>
--->
+
 
 <!-- Article list -->
 <div class="col-xs-12">
@@ -73,7 +73,7 @@
         release.</p>
     <div id="article-list">
         <table ng-table="articlesTable" show-filter="true" class="table table-striped table-condensed table-bordered">
-          <tobdy>
+          <tbody>
             <tr ng-repeat="row in $data">
 
               <td data-title="'Name'" sortable="'name'" filter="{ name: 'text' }"><a
@@ -81,6 +81,73 @@
                       name={{::row.name}} uuid={{::row.uuid}}></fav-list></td>
               <td data-title="'Rarity'" sortable="'rarity'" filter="{ rarity: 'text' }">{{::row.rarity}}</td>
               <td data-title="'Type'" sortable="'type'" filter="{ type: 'text' }">{{::row.type}}</td>
+
+              <!-- <td data-title="'Description'">
+                <p ng-show="row.platinum" style="margin: 0px;">
+                  In the last <b>{{::row.platinum.key}}</b> {{row.platinum.key > 1 ? 'days' : 'day'}}, <b>{{::row.platinum.q}}</b>
+                  {{row.platinum.q === 1 ? 'sale' : 'sales'}}
+                  <span ng-show="row.platinum.q === 1">
+                    for <span class="platinum-bold">{{::row.platinum.a}} P</span>
+                  </span>
+
+                  <span ng-show="row.platinum.q > 1">
+                    ranging from
+                    <span class="platinum-bold">{{::row.platinum.mi}} P</span> to
+                    <span class="platinum-bold">{{::row.platinum.ma}} P</span>
+                    (&Oslash; <span class="platinum-bold">{{::row.platinum.a}} P</span>)
+                  </span>
+                </p>
+
+                <p ng-show="row.gold" style="margin: 0px;">
+                  In the last <b>{{::row.gold.key}}</b> {{row.platinum.key > 1 ? 'days' : 'day'}}, <b>{{::row.gold.q}}</b>
+                  {{row.gold.q === 1 ? 'sale' : 'sales'}}
+                  <span ng-show="row.gold.q === 1">
+                    for <span class="gold-bold">{{::row.gold.a}} P</span>
+                  </span>
+
+                  <span ng-show="row.gold.q > 1">
+                    ranging from
+                    <span class="gold-bold">{{::row.gold.mi}} P</span> to
+                    <span class="gold-bold">{{::row.gold.ma}} P</span>
+                    (&Oslash; <span class="gold-bold">{{::row.gold.a}} P</span>)
+                  </span>
+                </p>
+
+
+              </td> -->
+
+              <td data-title="'Last x days'">
+                {{row.platinum.key ? row.platinum.key : '-'}} / {{row.gold.key ? row.gold.key : '-'}}
+              </td>
+              <td data-title="'Mean'">
+                <span ng-show="row.platinum" class="platinum">{{::row.platinum.a}} P</span><span ng-hide="row.platinum">-</span>
+                /
+                <span ng-show="row.gold" class="gold">{{::row.gold.a}} G</span><span ng-hide="row.gold">-</span>
+              </td>
+
+              <td data-title="'Min/Max'">
+                <span ng-show="row.platinum">
+                  <span class="platinum">{{::row.platinum.mi}} P</span> - <span class="platinum">{{::row.platinum.ma}} P</span>
+                </span>
+                <span ng-hide="row.platinum">-</span>
+                /
+                <span ng-show="row.gold">
+                  <span class="gold">{{::row.gold.mi}} G</span> - <span class="gold">{{::row.gold.ma}} G</span>
+                </span>
+                <span ng-hide="row.gold">-</span>
+              </td>
+
+              <td data-title="'Quantity'">
+                <span ng-show="row.platinum">
+                  {{::row.platinum.q}}
+                </span>
+                <span ng-hide="row.platinum">-</span>
+                /
+                <span ng-show="row.gold">
+                  {{::row.gold.q}}
+                </span>
+                <span ng-hide="row.gold">-</span>
+              </span>
 
             </tr>
           </tbody>

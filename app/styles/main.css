@@ -104,13 +104,29 @@ div.navbar-header > a.navbar-brand {
 	border-radius: 0px;
 }
 
+.text-light {
+	opacity: 0.3;
+}
+
+td.slim-paragraphs > p {
+	margin: 0px;
+}
+
 /* classes for currency colors */
 .platinum {
   color: rgb(122, 122, 122);
 }
+.platinum-bold {
+	color: rgb(122, 122, 122);
+	font-weight: bold;
+}
 
 .gold {
   color: #efad00;
+}
+.gold-bold {
+	color: #efad00;
+	font-weight: bold;
 }
 
 /* fixes search button height in search bar */
