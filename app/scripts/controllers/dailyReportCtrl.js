@@ -25,6 +25,7 @@ angular.module('hexsales-client')
                                     name: r.name,
                                     set: Api.findRealSetName(r.set),
                                     rarity: r.rarity,
+																		type: r.type,
                                     quantity: {
                                         numerical: r.quantity,
                                         string: numeral(r.quantity).format('0,0')

@@ -26,6 +26,7 @@
                   uuid={{::row.uuid}}></fav-list></td>
           <td data-title="'Rarity'" filter="{ rarity: 'text' }" sortable="'rarity'">{{::row.rarity}}</td>
           <td data-title="'Set'" filter="{ set: 'text' }" sortable="'set'"><a href="#/sets/{{::row.set}}">{{::row.set}}</a></td>
+		  <td data-title="'Type'" filter="{ type: 'text' }" sortable="'type'">{{::row.type}}</td>
           <td data-title="'Quantity'" sortable="'quantity.numerical'">{{::row.quantity.string}}</td>
           <td data-title="'Total'" sortable="'total.numerical'">{{::row.total.string}} {{::currency[0].toUpperCase()}}</td>
           <td data-title="'Mean'" sortable="'avg.numerical'">{{::row.avg.string}} {{::currency[0].toUpperCase()}}</td>
